@@ -1,0 +1,22 @@
+.hire_card {
+  @apply relative flex w-full flex-col items-center gap-5 overflow-hidden rounded-2xl bg-neutral-200 md:gap-4;
+  &__img {
+    @apply relative m-0 aspect-h-image min-h-[300px]  overflow-hidden object-fill;
+    /* @apply relative m-0 aspect-h-image w-full; */
+
+    & > img {
+      @apply object-cover;
+    }
+  }
+  &__chips {
+    @apply absolute top-4 right-2 z-10 flex gap-4;
+  }
+
+  &__body {
+    @apply flex w-full flex-col items-start px-8 pb-8;
+  }
+
+  &__footer {
+    @apply flex items-center gap-3;
+  }
+}

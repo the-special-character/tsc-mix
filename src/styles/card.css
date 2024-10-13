@@ -1,0 +1,13 @@
+.profile-info {
+  grid-template-columns: auto 2fr;
+  @apply grid items-center gap-4;
+  &__image {
+    @apply relative w-12;
+  }
+  &__name {
+    @apply text-base font-bold capitalize text-neutral-700;
+  }
+  &__designation {
+    @apply text-base capitalize;
+  }
+}

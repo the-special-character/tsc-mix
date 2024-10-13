@@ -1,0 +1,5 @@
+.socialicons {
+  @apply grid justify-items-center gap-2 pt-2;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 20px));
+  grid-template-rows: 1;
+}

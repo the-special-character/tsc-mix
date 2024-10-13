@@ -1,0 +1,23 @@
+.testimonial_card {
+  @apply flex h-full w-full flex-col items-center gap-8 overflow-hidden rounded-3xl px-8 py-14 shadow-dark md:flex-row;
+
+  &__img {
+    @apply relative overflow-hidden rounded-full;
+
+    &__hover_icon {
+      @apply absolute left-1/2 top-1/2 aspect-square w-1/4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-100 text-primary duration-300 hover:scale-125 hover:bg-primary hover:text-neutral-100 flex justify-center items-center;
+    }
+  }
+
+  &__body {
+    @apply flex h-full flex-1 flex-col items-center gap-6 md:items-start;
+
+    & > * {
+      @apply text-center md:text-start;
+    }
+  }
+
+  &__desc {
+    @apply m-0 h-full p-0 line-clamp-4;
+  }
+}

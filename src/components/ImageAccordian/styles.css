@@ -1,0 +1,34 @@
+.image-accordion {
+  @apply flex max-lg:flex-wrap cursor-pointer;
+}
+
+.image-accordion-item {
+  @apply relative overflow-hidden w-[48rem] lg:w-64 h-[500px]    transition duration-500 max-lg:h-[60px];
+}
+
+.image-accordion-item p {
+  @apply text-background text-subtitle1 ;
+}
+
+.image-accordion-item.active {
+  @apply lg:w-[90rem]  transition-all  animate-fadeleft duration-1000  opacity-100 max-lg:h-[75vh] ;
+}
+
+.image-accordion-item .content {
+  @apply absolute invisible p-8  bottom-0 ;
+}
+
+.image-accordion-item .content1 {
+  @apply absolute text-xl lg:p-5 p-4 lg:w-[600px] lg:h-[600px] lg:bottom-0 lg:text-3xl font-bold text-background lg:-rotate-90;
+}
+
+.image-accordion-item.active .content1 {
+  @apply lg:p-8 max-lg:p-2 rotate-0 absolute text-heading4 top-0  text-background;
+}
+
+.image-accordion-item.active .content {
+  @apply opacity-100 visible animate-fadeinup duration-1000 ;
+}
+.image-accordion-item img {
+  @apply absolute  object-cover top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  h-[100%] ;
+}

@@ -1,0 +1,73 @@
+.individualcourse {
+  @apply relative overflow-clip;
+  &__content {
+    @apply relative h-full w-full;
+    &__bg {
+      @apply absolute -z-10 h-[500px] w-full bg-neutral-700 lg:h-[600px];
+    }
+    &__round {
+      @apply absolute -right-96 -top-96 -z-10 h-[500px] w-[500px] rounded-full bg-secondary3 md:-right-48 md:-top-80 lg:-right-36 lg:-top-60;
+    }
+  }
+  .video {
+    @apply relative aspect-video max-h-[600px] w-screen;
+    @media (max-width: 300px) and (orientation: landscape) {
+      @apply max-h-[200px];
+    }
+    @media (max-width: 1024px) and (orientation: landscape) {
+      @apply max-h-[300px];
+    }
+    @media (min-width: 1024px) and (max-width: 1279px) (orientation: landscape) {
+      @apply max-h-[450px];
+    }
+    @media (min-width: 1280px) and (orientation: landscape) {
+      @apply max-h-[650px];
+    }
+  }
+}
+
+.main {
+  @apply grid gap-8 px-container;
+  @media only screen and (min-width: 1010px) {
+    grid-template-columns: 2fr 1fr;
+  }
+  &__left-section {
+    &__title {
+      @apply pt-4 text-6xl text-neutral-100 md:text-9xl;
+    }
+    &__preview {
+      @apply relative aspect-video w-full overflow-hidden rounded-3xl grayscale-0;
+      &__body {
+        @apply absolute z-10 flex h-full w-full items-center justify-center;
+        display: flex;
+
+        @media (min-width: 540px) {
+          & > :is(aside, section) {
+            grid-area: stack;
+          }
+        }
+      }
+      &__body-content {
+        @apply flex h-20 w-20 items-center justify-center rounded-full bg-secondary1 md:h-32 md:w-32;
+      }
+    }
+    &__course-navigation {
+      @apply my-8 flex flex-col gap-3 rounded-3xl md:my-12 md:flex-row md:rounded-full lg:my-16;
+    }
+    &__about {
+      @apply border-b-[1px] border-neutral-400 py-4 md:py-16 lg:py-20;
+    }
+    &__topic {
+      @apply border-b-[1px] border-neutral-400 py-12 md:py-16  lg:py-20;
+    }
+    &__result {
+      @apply border-b-[1px] border-neutral-400 py-12 md:py-16 lg:py-20;
+    }
+    &__image {
+      @apply relative min-h-[162px] w-full md:min-h-[400px];
+    }
+  }
+  &__right-section {
+    @apply sticky top-0;
+  }
+}

@@ -1,0 +1,48 @@
+.dropbtn {   
+    border: none;
+  }
+  
+  .dropdown {
+    
+    display: inline-block;
+
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    
+    
+    
+    z-index: -1;
+  }
+  
+  .dropdown-content a {
+   
+    padding: 4px 1px;
+    text-decoration: none;
+    display: block;
+  }
+  
+
+  .dropbtn .ArrowUp {
+    display: inline-block;
+  }
+  
+  .dropbtn .ArrowDown {
+    display: none;
+  }
+  
+  .dropbtn:hover .ArrowUp {
+    display: none;
+  }
+  
+  .dropbtn:hover .ArrowDown {
+    display: inline-block;
+  }
+  
+  .dropdown:hover .dropdown-content {display: block;
+  width: 100%;}
+  
+  
+  

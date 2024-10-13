@@ -1,0 +1,7 @@
+.projects {
+  @apply mx-0 px-container pb-12 md:px-16 md:pb-16 lg:mx-12 lg:px-container xl:mx-44;
+
+  &__content {
+    @apply my-8;
+  }
+}

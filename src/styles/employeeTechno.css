@@ -1,0 +1,15 @@
+.employeeTechno {
+  @apply h-auto px-container md:px-16 lg:px-container;
+  &__main {
+    @apply mx-0 grid lg:mx-12 xl:mx-44;
+  }
+  &__title {
+    @apply flex-1 lg:flex-[0.8];
+  }
+  &__content {
+    @apply grid grid-cols-1 gap-x-10 lg:grid-cols-2;
+  }
+  &__content-item {
+    @apply flex justify-between p-0 px-3 font-bold text-primary;
+  }
+}

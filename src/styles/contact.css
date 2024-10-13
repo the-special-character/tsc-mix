@@ -1,0 +1,45 @@
+.contact {
+  @apply relative grid grid-cols-1 gap-8 overflow-hidden px-container py-20 lg:py-32;
+
+  @media only screen and (min-width: theme(screens.lg)) {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  &__title {
+    @apply col-span-full mb-0 text-center lg:text-left;
+  }
+
+  &__desc {
+    @apply col-span-full text-center md:mx-12 lg:mx-0 lg:text-left;
+  }
+
+  &__body {
+    @apply rounded-2xl bg-neutral-100 p-4 shadow-dark md:p-8;
+  }
+
+  &__cards {
+    @apply grid grid-cols-1 items-center gap-6;
+  }
+
+  &__card_details {
+    @apply grid w-full justify-items-center rounded-2xl bg-neutral-100 py-4 text-center shadow-dark;
+  }
+
+  &__card_info {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  &__svg {
+    @apply w-16 overflow-hidden rounded-full;
+  }
+
+  &__yellowcircle {
+    @apply absolute -right-[900px] -z-10 h-[400px] w-[400px] rounded-full bg-secondary2 md:top-[10%] md:-right-[49%] lg:top-24 lg:-right-48;
+  }
+  &__orangecircle {
+    @apply absolute top-[68%] -left-[40%] -z-10 h-[400px] w-[400px] rounded-full bg-secondary3 md:top-[63%] md:-left-36 lg:top-[65%] lg:-left-20;
+  }
+  &__blucircle {
+    @apply absolute -left-[900px] -z-10 h-[400px] w-[400px] rounded-full bg-secondary1 md:-top-80 md:-left-44 lg:-top-[24%] lg:-left-20;
+  }
+}

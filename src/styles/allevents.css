@@ -1,0 +1,75 @@
+.events {
+  @apply relative overflow-hidden;
+
+  &__banner {
+    @apply absolute h-48 w-full bg-primary lg:h-96;
+  }
+
+  &__page {
+    @apply relative overflow-hidden bg-neutral-100 px-md-container pt-12 md:pt-20;
+  }
+
+  &__background {
+    @apply relative;
+
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 z-10 aspect-square w-1/3 -translate-x-2/3  rounded-full bg-secondary3;
+    }
+    &::after {
+      content: '';
+      @apply absolute right-0 top-0 z-10 aspect-square w-1/3 translate-x-2/3 translate-y-[70%] rounded-full bg-secondary2;
+    }
+  }
+
+  &__image {
+    @apply relative z-20 m-auto aspect-video overflow-hidden rounded-2xl pt-5 md:max-h-[550px];
+  }
+
+  &__body {
+    @apply /* @apply lg:py-10; */
+    mx-auto flex flex-col flex-wrap gap-10 overflow-hidden md:flex-col md:py-4 lg:flex-row lg:items-baseline lg:justify-center lg:gap-32;
+  }
+  &__header {
+    @apply m-0 mb-6 flex-col items-start justify-start  text-center uppercase lg:items-center;
+  }
+  &__h6 {
+    @apply m-0 mb-2 text-base font-semibold uppercase text-neutral-800 sm:text-lg md:text-base;
+  }
+  &__h1 {
+    @apply mb-3 font-serif text-5xl font-semibold text-neutral-800 sm:text-7xl md:text-8xl lg:text-9xl;
+  }
+
+  &__datails {
+    @apply !mb-16 flex-1 md:mb-20 lg:mb-32;
+  }
+  &__title {
+    @apply flex flex-row justify-start gap-4 whitespace-nowrap font-bold text-neutral-800 md:items-center;
+  }
+  &__tools {
+    @apply mb-5 flex flex-1 justify-between gap-4;
+  }
+  &__svg {
+    @apply flex flex-row items-center gap-2 pb-4 md:p-0;
+  }
+  &__top {
+    @apply mr-6 text-xs font-bold text-neutral-800 lg:text-base;
+  }
+  &__chip {
+    @apply hidden gap-2 border border-[#e7eaee] md:flex md:flex-row;
+    &:hover {
+      path {
+        fill: white;
+      }
+    }
+  }
+  &__head {
+    @apply mb-2 block text-3xl font-semibold text-primary md:mb-5 md:text-6xl;
+  }
+  &__button {
+    @apply px-10 py-5 text-center uppercase md:w-72 md:py-6;
+  }
+  &__paragraph {
+    @apply mx-auto mb-6 flex flex-col items-start gap-2 px-4 md:px-0 md:pb-36;
+  }
+}

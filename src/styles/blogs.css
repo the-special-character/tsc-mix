@@ -1,0 +1,25 @@
+.blogs {
+  @apply overflow-hidden bg-neutral-200 px-container py-24 sm:px-sm-container md:py-36 lg:px-container xl:py-44;
+  &__header {
+    @apply mb-10 flex flex-col items-center gap-5 lg:mb-14 lg:flex-row lg:justify-between;
+  }
+  &__title {
+    @apply my-auto text-3xl md:text-6xl;
+  }
+  &__btn {
+    @apply lg:justify-self-end;
+  }
+  &__grid {
+    @apply grid grid-cols-1 gap-4 pb-2 md:grid-rows-3 lg:grid-cols-2;
+
+    & > a {
+      @apply first:row-span-full;
+    }
+  }
+  &__horizontal {
+    @apply grid gap-8;
+  }
+  &__moreblogs {
+    @apply grid gap-7 gap-y-12 px-sm-container py-8 md:grid-cols-2 md:px-container;
+  }
+}

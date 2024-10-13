@@ -1,0 +1,12 @@
+.employeeCerti {
+  @apply px-container md:px-16 lg:px-container;
+  &__main {
+    @apply mx-0 lg:mx-12 xl:mx-44;
+  }
+  &__content {
+    @apply grid;
+  }
+  &__list {
+    @apply m-0 flex flex-col items-start justify-start p-0;
+  }
+}

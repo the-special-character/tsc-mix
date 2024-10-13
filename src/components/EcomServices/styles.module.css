@@ -1,0 +1,38 @@
+.tabContainer {
+    @apply w-full flex gap-4  max-md:px-0 max-md:flex-col ;
+  
+    & > .container {
+      @apply relative flex flex-col gap-4 h-max max-lg:flex-1;
+  
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        @apply bg-gray rounded-full -z-10;
+      }
+    }
+  }
+  
+  
+  
+  .tab {
+      @apply relative text-heading5;
+      &[aria-selected="true"]::after {
+          @apply bg-blue;
+      }
+      &::after {
+          content: "";
+          @apply bg-gray absolute -left-[7px] top-1/2 -translate-y-1/2 w-2 aspect-square rounded-full;
+        }
+  }
+  
+  .contentdiv{
+    @apply flex max-lg:flex-1 w-full;
+    & > .tabsContent{
+      @apply text-subtitle3
+    } 
+  }
+  

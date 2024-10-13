@@ -1,0 +1,7 @@
+.swiper {
+  @apply max-md:h-72 md:h-72 lg:h-80;
+
+  & > .SwiperSlide {
+    @apply mb-0 flex items-center justify-center;
+  }
+}

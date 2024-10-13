@@ -1,0 +1,30 @@
+.education {
+  @apply grid justify-items-center gap-8 px-container py-16  sm:mx-auto sm:px-sm-container lg:px-container lg:pt-44;
+  &__header {
+    @apply mt-8 text-center;
+  }
+
+  &__body {
+    @apply grid grid-cols-1 place-items-center justify-center gap-16 md:mx-auto lg:grid-cols-2;
+  }
+  &__image {
+    @apply relative w-full overflow-hidden rounded-2xl bg-neutral-300;
+    aspect-ratio: 1 / 1.2;
+  }
+  &__content {
+    @apply flex flex-col gap-6;
+  }
+  &__item {
+    @apply grid grid-flow-col gap-6;
+  }
+  &__line {
+    @apply col-span-2 h-[1px] w-[100%] rounded-full  bg-neutral-300;
+  }
+  @media screen and (max-width: 768px) {
+    div:nth-of-type(2) {
+      div:nth-child(1) {
+        order: 2;
+      }
+    }
+  }
+}

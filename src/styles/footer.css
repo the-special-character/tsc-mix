@@ -1,0 +1,47 @@
+.footer {
+  @apply grid grid-cols-1 items-center gap-10 overflow-hidden bg-neutral-700 px-container pb-6 pt-20 md:grid-cols-2 md:gap-20;
+
+  & :is(p, a) {
+    @apply text-neutral-300;
+  }
+
+  & hr {
+    @apply text-neutral-600;
+  }
+
+  &__title {
+    @apply m-0 text-neutral-100;
+  }
+
+  &__description {
+    @apply m-0 text-neutral-100 md:max-w-lg md:justify-self-end;
+  }
+  &__links {
+    @apply grid grid-cols-1 gap-3;
+    @media screen and (min-width: 375px) {
+      @apply grid-cols-2;
+    }
+  }
+
+  &__pages {
+    @apply w-full md:max-w-lg md:justify-self-end;
+    & > h3 {
+      @apply pb-8;
+    }
+  }
+
+  &__copyright {
+    @apply text-neutral-100 md:max-w-lg md:justify-self-end;
+  }
+  &__email_section {
+    @media screen and (max-width: 478px) {
+      @apply grid gap-2;
+    }
+    @media screen and (min-width: 478px) {
+      @apply w-4/5;
+      button {
+        @apply absolute right-3 top-2;
+      }
+    }
+  }
+}

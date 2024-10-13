@@ -1,0 +1,105 @@
+#sidenav-open {
+  --easeOutExpo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 0.6s;
+  --surface: lch(90 0 0);
+  --surface2: lch(100 0 0);
+  --text: lch(20 0 0);
+  --text2: lch(40 0 0);
+
+  display: grid;
+  grid-template-columns: [nav] 80% [escape] 20%;
+  z-index: 9999;
+  height: 100vh;
+
+  position: sticky;
+  top: 0;
+  max-height: 100dvh;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+
+  visibility: hidden; /* not keyboard accessible when closed */
+  transform: translateX(-110vw);
+  will-change: transform;
+  transition: transform var(--duration) var(--easeOutExpo),
+    visibility 0s linear var(--duration);
+
+  &:target {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform var(--duration) var(--easeOutExpo);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    --duration: 1ms;
+  }
+
+  & > nav {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    font-size: 1.25rem;
+    color: var(--text);
+    @apply md:hidden;
+
+    background-color: var(--surface2);
+    border-inline-end: 1px var(--surface1);
+    box-shadow: 5px 0 40px hsla(0 0% 0% / 0.45);
+    font-size: 1.5rem;
+
+    & > div {
+      @apply p-4 shadow-dark;
+    }
+
+    & > a {
+      @apply m-4;
+    }
+
+    & a {
+      text-decoration: none;
+      line-height: 1.25;
+    }
+
+    & > ul > li {
+      @apply m-0;
+      & > a {
+        @apply block px-4 py-3;
+      }
+    }
+  }
+}
+
+#sidenav-button,
+#sidenav-close {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  touch-action: manipulation;
+
+  @apply md:hidden;
+}
+.nav-item {
+  @apply mb-0 p-0 text-base drop-shadow-none;
+  & > ul {
+    & > li {
+      @apply m-0;
+      & > a {
+        @apply block px-8 py-3 text-xl font-semibold;
+      }
+    }
+  }
+  & > summary {
+    @apply justify-between px-4;
+    &::before {
+      content: '\2023';
+      @apply order-1 m-0 aspect-auto rotate-0 rounded-none bg-transparent duration-300;
+    }
+  }
+}
+.nav-item[open] {
+  & > summary {
+    &::before {
+      content: '\2023';
+      @apply rotate-90 bg-transparent;
+    }
+  }
+}
