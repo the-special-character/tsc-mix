@@ -7,7 +7,7 @@
 }
 
 .imageAccordionItemText {
-  @apply text-background text-subtitle1;
+  @apply text-subtitle1;
 }
 
 .imageAccordionItemActive {

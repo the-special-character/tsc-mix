@@ -158,15 +158,13 @@ export default function RootLayout({
       <Suspense fallback={<SideNavSkeleton />}>
         <SideNav />
       </Suspense>
-      <div>
+      <div
+        className={`${kumbSans.variable} ${newsreader.variable} ${flowBlock.variable} antialiased`}
+      >
         <Suspense fallback={<HeaderSkeleton />}>
           <Header />
         </Suspense>
-        <main
-          className={`${kumbSans.variable} ${newsreader.variable} ${flowBlock.variable} antialiased`}
-        >
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
         <CookieBanner />
         <div className="fixed bottom-[86px] right-[6px] z-50 h-16 w-16">

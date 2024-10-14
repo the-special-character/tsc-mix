@@ -60,7 +60,7 @@ export default function TechLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const urlPath = "/tech";
+  const urlPath = "/";
   return (
     <main className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <Navbar />
