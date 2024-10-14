@@ -5,8 +5,8 @@ export async function POST(req: Request) {
   const { phone, name } = await req.json();
   const body = `hello  ${name}`;
   const twilio = new Twilio(
-    "ACee313f432f362ffac7edc2ee3a2d15c3",
-    "87d731f531108e10e9729e7572a73399"
+    process.env.TWILIO_USERNAME,
+    process.env.TWILIO_PASSWORD
   );
 
   try {
