@@ -70,8 +70,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export default async function Page(props: PageProps) {
   const builderModelName = "page";
 
-  console.log("props?.params?.page", props?.params?.page);
-
   const content = await builder
     // Get the page content from Builder with the specified options
     .get(builderModelName, {

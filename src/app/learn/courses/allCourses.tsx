@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Features from '../../ui/features';
-import CourseCard from '@/ui/CourseCard';
-import { CourseEntity } from 'types/types';
+import React, { useState } from "react";
+import CourseCard from "@/ui/CourseCard";
+import { CourseEntity } from "types/types";
+import Features from "@/ui/features";
 type Props = {
   courses: CourseEntity[];
   category?: string;
@@ -12,7 +12,7 @@ type Props = {
 type ChipsType = { children: string; onClick?: () => void; slug?: string };
 
 const AllCourses = ({ courses, category }: Props) => {
-  const [selectedCategory, setSelectedCategory] = useState(category || 'All');
+  const [selectedCategory, setSelectedCategory] = useState(category || "All");
 
   const chips = courses.reduce(
     (acc: ChipsType[], course) => {
@@ -25,7 +25,7 @@ const AllCourses = ({ courses, category }: Props) => {
           {
             children,
             onClick: () => {
-              setSelectedCategory(slug || 'all');
+              setSelectedCategory(slug || "all");
             },
             slug,
           },
@@ -35,13 +35,13 @@ const AllCourses = ({ courses, category }: Props) => {
     },
     [
       {
-        children: 'all',
+        children: "all",
         onClick: () => {
-          setSelectedCategory('all');
+          setSelectedCategory("all");
         },
-        slug: 'all',
+        slug: "all",
       },
-    ] as ChipsType[],
+    ] as ChipsType[]
   );
 
   return (
@@ -61,7 +61,7 @@ const AllCourses = ({ courses, category }: Props) => {
         <div className="items__item">
           {courses.map((data) => {
             if (
-              selectedCategory === 'all' ||
+              selectedCategory === "all" ||
               data.attributes?.category?.data?.attributes?.slug ===
                 selectedCategory
             ) {

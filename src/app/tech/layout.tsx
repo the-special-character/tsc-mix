@@ -3,6 +3,10 @@ import { builder } from "@builder.io/sdk";
 import localFont from "next/font/local";
 import "./globals.css";
 import { RenderBuilderContent } from "@/components/builder";
+import { Suspense } from "react";
+import Header, { HeaderSkeleton } from "@/components/Common/Header";
+import { Kumbh_Sans, Flow_Block } from "next/font/google";
+import SideNav, { SideNavSkeleton } from "@/components/Common/Sidenav";
 import Navbar from "@/components/Navbar";
 
 type SetionProps = {
@@ -11,16 +15,35 @@ type SetionProps = {
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "../fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "../fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
+
+// const kumbSans = Kumbh_Sans({
+//   style: ["normal"],
+//   subsets: ["latin"],
+//   variable: "--font-kumbh",
+//   preload: true,
+// });
+
+// const newsreader = localFont({
+//   src: "../fonts/newsreader-latin-600-normal.woff2",
+// });
+
+// const flowBlock = Flow_Block({
+//   weight: "400",
+//   style: ["normal"],
+//   subsets: ["latin"],
+//   variable: "--font-block",
+//   preload: true,
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -62,11 +85,17 @@ export default function TechLayout({
 }>) {
   const urlPath = "/";
   return (
-    <main className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <>
+      {/* <Suspense fallback={<SideNavSkeleton />}>
+        <SideNav />
+      </Suspense>
+      <Suspense fallback={<HeaderSkeleton />}>
+        <Header />
+      </Suspense> */}
       <Navbar />
-      {children}
+      <main>{children}</main>
       <ContactFormSection urlPath={urlPath} />
       <FooterSection urlPath={urlPath} />
-    </main>
+    </>
   );
 }

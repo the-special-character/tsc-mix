@@ -4,14 +4,8 @@ import "@/styles/header.css";
 import TscLogoSvg from "@/public/icons/tscLogo.svg";
 import TscSvg from "@/public/icons/tsc.svg";
 import HemburgerSvg from "@/public/icons/hemburger.svg";
-import { getMenuData } from "@/lib/getMenu";
-import {
-  MenusMenuItem,
-  MenusMenuItemRelationResponseCollection,
-} from "types/types";
 import { ScrollDiv } from "@/hooks/useScroll";
-
-type Props = {};
+import { headerData } from "@/lib/constantData";
 
 export const HeaderSkeleton = () => {
   return (
@@ -23,17 +17,15 @@ export const HeaderSkeleton = () => {
 
       <nav className="header__nav">
         <ul>
-          {[1, 2, 3, 4, 5].slice(0, -1).map((x) => {
+          {[1, 2, 3, 4].slice(0, -1).map((x) => {
             return (
               <li key={x}>
-                <div className="header__link text-neutral-800 font-cursive">
-                  Bootcamps
-                </div>
+                <div className="header__link font-cursive">Bootcamps</div>
                 <nav className="header__nested_nav">
                   <ul>
                     return (
                     <li key={x}>
-                      <div className="font-cursive">Full Stack Bootcamp</div>
+                      <div className="font-cursive">It services</div>
                     </li>
                     );
                   </ul>
@@ -44,7 +36,7 @@ export const HeaderSkeleton = () => {
         </ul>
       </nav>
       <button className="header__button btn btn--primary btn--small font-cursive ">
-        HIRE OUR GRADUATES
+        HIRING
       </button>
       <div className="md:hidden">
         <div className="h-12 w-12 bg-neutral-300"></div>
@@ -53,46 +45,42 @@ export const HeaderSkeleton = () => {
   );
 };
 
-const Header = async (props: Props) => {
-  const menuData = await getMenuData();
-
-  const { data: menuOptions } = menuData?.data.data?.attributes
-    ?.items as MenusMenuItemRelationResponseCollection;
-
-  const attributes = menuOptions.at(-1)?.attributes;
+const Header = async () => {
+  const lastAttribute = headerData.at(-1);
 
   return (
     <header className="header" id="header">
       <ScrollDiv />
-      <Link href="/">
+      <Link prefetch={false} href="/tech">
         <p className="sr-only">The Special Character Logo</p>
-        <TscLogoSvg className="header__tsclogo md:hidden lg:block fill-primary" />
+        <TscLogoSvg className="header__tsclogo md:hidden lg:block" />
         <TscSvg className="hidden h-[56px] w-[52px] md:block lg:hidden" />
       </Link>
       <nav className="header__nav">
         <ul>
-          {menuOptions.slice(0, -1).map((x) => {
-            const { title, url, children, order } =
-              x.attributes as MenusMenuItem;
+          {headerData.slice(0, -1).map((x) => {
+            const { title, url, children, order } = x;
             return (
               <li key={order}>
                 <Link
-                  href={`/learn${url}`}
-                  className="header__link text-neutral-800"
+                  href={url ? `/tech/${url}` : ""}
+                  prefetch={false}
+                  className="header__link"
                 >
                   {title}
                 </Link>
-                {children.data.length > 0 && (
+                {children.length > 0 && (
                   <nav className="header__nested_nav">
-                    <ul className="bg-neutral-100">
-                      {children.data.map((y) => {
+                    <ul>
+                      {children?.map((y) => {
                         return (
-                          <li key={y.id}>
+                          <li key={y.order}>
                             <Link
-                              href={`/learn${y.attributes.url}`}
-                              className="header__link text-neutral-800 "
+                              prefetch={false}
+                              href={y?.url ? `/tech/${y?.url}` : ""}
+                              className="header__link"
                             >
-                              {y.attributes.title}
+                              {y?.title}
                             </Link>
                           </li>
                         );
@@ -106,10 +94,11 @@ const Header = async (props: Props) => {
         </ul>
       </nav>
       <Link
-        href={`/learn${attributes.url}`}
-        className="header__button btn btn--primary btn--small "
+        href={lastAttribute?.url ? `/tech/${lastAttribute?.url}` : ""}
+        prefetch={false}
+        className="header__button btn btn--primary btn--small"
       >
-        {attributes.title}
+        {lastAttribute?.title}
       </Link>
       <a
         href="#sidenav-open"

@@ -1,13 +1,13 @@
 .header {
   grid-template-columns: auto 1fr auto;
 
-  @apply sticky z-40 grid items-center justify-items-center bg-neutral-100 px-container py-4 shadow-dark duration-300;
+  @apply sticky z-40 grid items-center justify-items-center bg-neutral-100 px-container py-4 duration-300;
   &__tsclogo {
     @apply h-12 w-28 lg:w-44;
   }
 
   &__link {
-    @apply font-bold text-neutral-800;
+    @apply font-bold text-lg;
     &:hover {
       @apply text-secondary3;
     }
@@ -37,7 +37,7 @@
     @apply z-50 w-fit bg-transparent;
 
     & > ul {
-      @apply mt-10 overflow-hidden rounded-xl bg-neutral-100 shadow-dark;
+      @apply mt-10 overflow-hidden rounded-xl  shadow-dark;
 
       & > li {
         @apply m-0 p-0;

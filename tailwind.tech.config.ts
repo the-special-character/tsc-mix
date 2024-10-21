@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
   darkMode: ["class"],
@@ -26,6 +27,11 @@ const config = {
     },
     listStyleImage: {
       check: 'url("/icons/check.svg")',
+    },
+    fontFamily: {
+      sans: ["var(--font-kumbh)", ...fontFamily.sans],
+      serif: ["var(--font-newsreader)", ...fontFamily.serif],
+      cursive: ["var(--font-block)", "cursive"],
     },
     extend: {
       colors: {

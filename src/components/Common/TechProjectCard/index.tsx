@@ -1,17 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Course, CourseEntity, UploadFile } from "types/types";
-import Icon from "./Icon";
 import "@/styles/courseCard.css";
 import clsx from "clsx";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 type Props = {
-  course: CourseEntity;
+  project: {
+    id: number;
+    image: string | StaticImport;
+    title: string;
+    description: string;
+    url?: string;
+  };
   isHorizontal?: boolean;
 };
 
-export const CourseCardSkeleton = ({
+export const TechProjectCardSkeleton = ({
   isHorizontal,
 }: {
   isHorizontal?: boolean;
@@ -54,19 +59,8 @@ export const CourseCardSkeleton = ({
   );
 };
 
-const CourseCard = ({ course, isHorizontal }: Props) => {
-  const {
-    title,
-    description,
-    courseVideoPoster,
-    brochure,
-    duration,
-    price,
-    slug,
-  } = course.attributes as Course;
-  const { url, alternativeText } = courseVideoPoster?.data
-    ?.attributes as UploadFile;
-  const brochureUrl = brochure?.data?.attributes?.url;
+const TechProjectCard = ({ project, isHorizontal }: Props) => {
+  const { title, description, url, image } = project;
 
   return (
     <div
@@ -74,36 +68,25 @@ const CourseCard = ({ course, isHorizontal }: Props) => {
         "course_card--hoz": !!isHorizontal,
       })}
     >
-      <Link href={`/learn/courses/${encodeURIComponent(slug)}`}>
+      <Link href={url ? url : ""}>
         <figure className="course_card__img">
           <Image
-            src={`${url}?tr=ar-16-9`}
-            alt={`${alternativeText || "course card"}`}
-            title={`${alternativeText || "course card"}`}
+            src={image ? image : ""}
+            alt={`${title || "course card"}`}
+            title={`${title || "course card"}`}
             fill
             sizes="(max-width: 640px) 100vw,576px"
           />
-          <div className="course_card__chips">
-            <div className="chip chip--white">{duration}</div>
-            {price && (
-              <div className="chip chip--primary">
-                {`${new Intl.NumberFormat(price.format.replace("_", "-"), {
-                  style: "currency",
-                  currency: price.currency,
-                  minimumFractionDigits: 0,
-                }).format(price.price)}/${price.unit}`}
-              </div>
-            )}
-          </div>
         </figure>
       </Link>
       <div className="course_card__body">
-        <Link
-          href={`learn/courses/${encodeURIComponent(slug)}`}
-          className="course_card__main"
-        >
-          <h3 className="course_card__title">{title}</h3>
-          <p className="course_card__desc">{description}</p>
+        <Link href={url ? url : ""} className="course_card__main">
+          <h3 className="course_card__title text-heading6">
+            {title ? title : "title"}
+          </h3>
+          <p className="course_card__desc text-subtitle2">
+            {description ? description : "description"}
+          </p>
         </Link>
 
         {/* ***{Dont Remove It This Code , no Body Touch it }*** */}
@@ -126,4 +109,4 @@ const CourseCard = ({ course, isHorizontal }: Props) => {
   );
 };
 
-export default CourseCard;
+export default TechProjectCard;

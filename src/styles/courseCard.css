@@ -1,7 +1,5 @@
 .course_card {
-  @apply flex h-full flex-col overflow-hidden rounded-2xl shadow-dark max-sm:w-72 sm:max-w-xl;
-
-
+  @apply flex h-full flex-col overflow-hidden rounded-2xl max-sm:w-72 sm:max-w-xl;
 
   &__img {
     @apply relative m-0 aspect-video w-full  overflow-hidden;
@@ -12,7 +10,7 @@
   }
 
   &__chips {
-    @apply absolute top-4 right-4 z-10 flex gap-4 max-md:hidden ;
+    @apply absolute top-4 right-4 z-10 flex gap-4 max-md:hidden;
   }
 
   &__body {
@@ -20,11 +18,11 @@
   }
 
   &__title {
-    @apply mb-3;
+    @apply mb-2;
   }
 
   &__desc {
-    @apply mb-6 text-neutral-700 line-clamp-3;
+    @apply mb-2 text-neutral-700 line-clamp-3;
   }
 
   &__action {

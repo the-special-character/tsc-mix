@@ -47,7 +47,7 @@
     font-size: 1.5rem;
 
     & > div {
-      @apply p-4 shadow-dark;
+      @apply p-4;
     }
 
     & > a {
@@ -90,7 +90,7 @@
   & > summary {
     @apply justify-between px-4;
     &::before {
-      content: '\2023';
+      content: "\2023";
       @apply order-1 m-0 aspect-auto rotate-0 rounded-none bg-transparent duration-300;
     }
   }
@@ -98,7 +98,7 @@
 .nav-item[open] {
   & > summary {
     &::before {
-      content: '\2023';
+      content: "\2023";
       @apply rotate-90 bg-transparent;
     }
   }

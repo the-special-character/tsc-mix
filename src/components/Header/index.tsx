@@ -38,15 +38,15 @@ const Header = ({ children }: Props) => {
   return (
     <header
       className={cn(
-        `w-full fixed max-w-screen z-20 top-0 py-2 bg-primary text-background ${colors?.hover} transition-all ease-in-out duration-300 ${colors?.color}`,
+        `w-full fixed max-w-screen z-40 drop-shadow-xl top-0 py-2 bg-[#fff] text-[#0f437f] ${colors?.hover} transition-all ease-in-out duration-300 ${colors?.color}`,
         {
           [`${colors?.bgColor}`]: visible,
           ["-translate-y-full"]: !visible,
         }
       )}
       style={{
-        backgroundColor: scrollPosition > 100 ? "rgba(0, 0, 0, 1)" : "",
-        color: scrollPosition > 100 ? "rgba(255, 255, 255, 1)" : "",
+        backgroundColor: scrollPosition > 100 ? "rgba(255, 255, 255, 1)" : "",
+        color: scrollPosition > 100 ? "#0f437f" : "",
       }}
     >
       {children}

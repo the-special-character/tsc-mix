@@ -156,8 +156,177 @@
   & ul {
     @apply list-outside marker:text-blue;
   }
+
+  details {
+    @apply mb-4 max-w-full rounded-md px-3 py-4 text-left drop-shadow-lg;
+
+    & > summary {
+      @apply relative flex cursor-pointer list-none items-start justify-start text-2xl font-bold text-[#0f437f] md:items-center;
+
+      &::marker {
+        @apply hidden;
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::before {
+        content: "\002B";
+        @apply mr-4 aspect-square h-12 w-12 rotate-90 rounded-full bg-neutral-300 text-center text-4xl font-bold text-neutral-600 duration-300;
+      }
+    }
+    & > div:last-child {
+      @apply overflow-hidden border-none py-4 pl-16 text-left text-base;
+    }
+  }
+
+  details.with-tag {
+    & > summary {
+      &::after {
+        content: "Download";
+        @apply absolute right-0 flex w-fit items-end justify-end text-left font-bold;
+      }
+    }
+  }
+
+  details[open] {
+    & > summary {
+      @apply text-neutral-600;
+
+      &::before {
+        content: "\2212";
+        @apply mr-4 aspect-square h-12 w-12 rotate-0 rounded-full bg-neutral-300 text-center text-4xl font-bold text-neutral-600 duration-300;
+      }
+    }
+    p {
+      @apply text-neutral-700;
+    }
+  }
 }
+
 @layer components {
+  .btn {
+    @apply inline-block rounded-full px-10 py-6 text-center text-base font-bold uppercase tracking-[0.08em];
+    transition: transform 300ms ease, background-color 300ms ease;
+    transform-style: preserve-3d;
+
+    &:hover {
+      transform: scale3d(0.96, 0.96, 1.01);
+    }
+
+    &--round {
+      @apply inline-flex aspect-square items-center justify-center p-0;
+    }
+
+    &--primary {
+      @apply bg-[#064ea4] text-neutral-100;
+    }
+
+    &--primary:hover {
+      @apply bg-neutral-800 text-neutral-100;
+    }
+
+    &--secondary {
+      @apply bg-neutral-300 text-neutral-700;
+    }
+
+    &--secondary:hover {
+      @apply bg-neutral-400 text-neutral-700;
+    }
+
+    &--white {
+      @apply bg-neutral-100 text-neutral-800;
+    }
+
+    &--white:hover {
+      @apply bg-primary text-neutral-100;
+      & > svg {
+        @apply fill-neutral-100;
+      }
+    }
+
+    &--small {
+      @apply px-6 py-4 text-base;
+    }
+
+    &--large {
+      @apply px-[68px] py-6 text-body2;
+    }
+  }
+  .carousal {
+    @apply relative grid;
+    width: 100%;
+    overflow-x: hidden;
+    --_carousel-gutters: max(
+      1rem,
+      calc((100dvw - calc(1280px - 1rem * 2)) / 2)
+    );
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows:
+      [carousel-scroller] 1fr
+      [carousel-pagination] var(--_carousel-pagination-size);
+
+    &__scroller {
+      @apply flex gap-8 pb-4;
+
+      scroll-padding-inline: var(--_carousel-gutters);
+      padding-inline: var(--_carousel-gutters);
+      grid-row: 1;
+      grid-column: 1/-1;
+
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: inline mandatory;
+      scroll-padding-left: var(--gap);
+      scroll-padding-right: var(--gap);
+      scroll-padding-inline: var(--gap);
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      @media (--motionOK) {
+        scroll-behavior: smooth;
+      }
+    }
+    .no-scrollbar::-webkit-scroller {
+      display: none;
+    }
+
+    &__items {
+      @apply m-0 max-w-3xl flex-shrink-0 flex-grow 
+     snap-center snap-always list-none rounded-3xl bg-neutral-100 p-0;
+    }
+
+    &__controls {
+      /* @apply absolute z-50 flex  w-full  items-center justify-between px-container; */
+      justify-content: space-between;
+      padding-inline: var(--_carousel-gutters);
+      @apply hidden md:contents;
+    }
+
+    &__control {
+      grid-row: 1;
+      place-self: center;
+      @apply z-50 mx-container w-20;
+
+      &:first-child {
+        grid-column: 1;
+      }
+      &:last-child {
+        grid-column: 3;
+      }
+    }
+
+    &__dots {
+      @apply col-span-full flex justify-center gap-3;
+    }
+
+    &__dot {
+      @apply h-2 w-2 rounded-full bg-neutral-400;
+    }
+  }
   .prose {
     & ol {
       @apply list-decimal list-inside;
