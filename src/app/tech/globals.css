@@ -1,4 +1,4 @@
-@config "../../../tailwind.tech.config.ts";
+@config "../../../tailwind.config.ts";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,6 +48,7 @@
     --color-skyblue: 33 141 228;
     --color-specialblue: 30 61 96;
     --color-offwhite: 0 0% 80%;
+    --color-white: 255 255 255;
   }
 
   .dark {

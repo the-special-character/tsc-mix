@@ -41,7 +41,7 @@ const HeaderDesktop = () => {
   }, [prevScrollPos]);
 
   return (
-    <div className="sticky z-40 flex items-center justify-between py-2 shadow-dark duration-300">
+    <div className="sticky z-40 flex items-center justify-between py-2  duration-300">
       <ScrollDiv />
       <Link prefetch={false} href="/tech">
         <p className="sr-only">The Special Character Logo</p>

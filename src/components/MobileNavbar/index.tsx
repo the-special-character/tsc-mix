@@ -11,7 +11,12 @@ const MobileNavbar = () => {
   return (
     <aside
       id="sidenav-open"
-      style={{ position: "fixed", top: "0px", left: "0px", width: "100%" }}
+      style={{
+        position: "fixed",
+        top: "0px",
+        left: "0px",
+        width: "100%"
+      }}
     >
       <nav>
         <Link prefetch={false} href="/tech">

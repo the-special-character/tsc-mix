@@ -20,7 +20,7 @@ type Props = {
 const WorkWithUs = ({ data }: Props) => {
   return (
     <div className="flex flex-col md:gap-32 gap-8 py-10 relative translate-y-[50px]">
-      <div className="absolute left-1/2 top-12 translate-x-[-50%] w-[1px]  *: bg-zinc-200 h-full max-sm:left-1 translate-y-[-50px]"></div>
+      <div className="absolute left-1/2 top-12 translate-x-[-50%] w-[1px]  *: bg-border h-full max-sm:left-1 translate-y-[-50px]"></div>
       {data &&
         data.map((item, index) => (
           <>
