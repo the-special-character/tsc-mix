@@ -1,11 +1,11 @@
-import { getBannerData } from '@/lib/getBanner';
-import Script from 'next/script';
-import { Banner } from 'types/types';
+import { getBannerData } from "@/lib/getBanner";
+import Script from "next/script";
+import { Banner } from "types/types";
 
 type Props = {};
 
 const ContactHeader = async (props: Props) => {
-  const bannerData = await getBannerData('contact');
+  const bannerData = await getBannerData("contact");
 
   const { title, description, seo } = bannerData.data.banner.data
     ?.attributes as Banner;
@@ -16,6 +16,7 @@ const ContactHeader = async (props: Props) => {
       <p className="contact__desc">{description}</p>
       {seo?.structuredData && (
         <Script
+          id={seo.id}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seo.structuredData),

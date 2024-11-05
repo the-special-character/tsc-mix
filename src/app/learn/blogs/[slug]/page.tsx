@@ -1,17 +1,17 @@
-import ActionBar from '@/ui/ActionBar';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { use } from 'react';
-import md from 'markdown-it';
-import Design from '@/public/icons/design.svg';
-import '@/styles/blogPost.css';
-import Button from '@/ui/Button';
-import { getBlogDetails } from '@/lib/getBlogDetails';
-import BlogCard from '@/ui/BlogCard';
-import { Blog, ComponentSharedSeo } from 'types/types';
-import Script from 'next/script';
-import { Metadata } from 'next';
-import { getSEOData } from '@/lib/getSEO';
+import ActionBar from "@/ui/ActionBar";
+import Image from "next/image";
+import Link from "next/link";
+import React, { use } from "react";
+import md from "markdown-it";
+import Design from "@/public/icons/design.svg";
+import "@/styles/blogPost.css";
+import Button from "@/ui/Button";
+import { getBlogDetails } from "@/lib/getBlogDetails";
+import BlogCard from "@/ui/BlogCard";
+import { Blog, ComponentSharedSeo } from "types/types";
+import Script from "next/script";
+import { Metadata } from "next";
+import { getSEOData } from "@/lib/getSEO";
 
 export async function generateMetadata({
   params,
@@ -22,21 +22,21 @@ export async function generateMetadata({
   const { seo } = blogData.data.individualBlog.data?.attributes as Blog;
 
   const facebook = seo?.metaSocial?.find(
-    (x) => x?.socialNetwork === 'Facebook',
+    (x) => x?.socialNetwork === "Facebook"
   );
-  const twitter = seo?.metaSocial?.find((x) => x?.socialNetwork === 'Twitter');
+  const twitter = seo?.metaSocial?.find((x) => x?.socialNetwork === "Twitter");
 
   let twitterMeta: Metadata = {};
   if (twitter) {
     twitterMeta = {
       twitter: {
-        card: 'summary_large_image',
+        card: "summary_large_image",
         title: twitter.title,
         description: twitter.description,
-        siteId: '1467726470533754880',
-        creator: '@nextjs',
-        creatorId: '1467726470533754880',
-        images: [twitter.image?.data?.attributes?.url || ''],
+        siteId: "1467726470533754880",
+        creator: "@nextjs",
+        creatorId: "1467726470533754880",
+        images: [twitter.image?.data?.attributes?.url || ""],
       },
     };
   }
@@ -48,16 +48,16 @@ export async function generateMetadata({
         title: facebook.title,
         description: facebook.description,
         url: `https://thespecialcharacter.com/blogs/${params.slug}`,
-        siteName: 'The Special Character',
+        siteName: "The Special Character",
         images: [
           {
-            url: facebook.image?.data?.attributes?.url || '',
+            url: facebook.image?.data?.attributes?.url || "",
             width: 800,
             height: 600,
           },
         ],
-        locale: 'en-US',
-        type: 'website',
+        locale: "en-US",
+        type: "website",
       },
     };
   }
@@ -88,6 +88,7 @@ export default async ({ params }: PageProps) => {
     <div className="wrapper">
       {seo?.structuredData && (
         <Script
+          id={seo.id}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seo.structuredData),
@@ -113,7 +114,7 @@ export default async ({ params }: PageProps) => {
           <div className="wrapper__body__content__author-info">
             <ActionBar data={author} />
             <span className="about-blog">
-              <Link href={'#'}>
+              <Link href={"#"}>
                 <span className="about-blog__accessory chip chip--white">
                   <Design className="chip__icon w-4" />
                   <span>{category?.data?.attributes?.title}</span>

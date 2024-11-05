@@ -3,6 +3,7 @@ import React from "react";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Carousal from "@/ui/Carousal";
 import TechProjectCard from "@/components/Common/TechProjectCard";
+import { CourseCardSkeleton } from "@/ui/CourseCard";
 
 export const BiProjectCardCarouselSkeleton = () => {
   return (

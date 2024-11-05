@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { builder } from "@builder.io/sdk";
 import localFont from "next/font/local";
-import  "./globals.css";
+import "./globals.css";
 import { RenderBuilderContent } from "@/components/builder";
 import { Suspense } from "react";
 import Header, { HeaderSkeleton } from "@/components/Common/Header";
@@ -77,6 +77,9 @@ const ContactFormSection = async ({ urlPath }: SetionProps) => {
 
   return <RenderBuilderContent content={content} model={builderModelName} />;
 };
+
+// export const dynamic = "force-dynamic";
+export const revalidate = 600;
 
 export default function TechLayout({
   children,
