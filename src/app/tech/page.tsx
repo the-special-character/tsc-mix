@@ -11,13 +11,13 @@ import {
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-interface PageProps {
-  params: {
-    page: string[];
-  };
-}
+// interface PageProps {
+//   params: {
+//     page: string[];
+//   };
+// }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const builderModelName = "page";
 
   const content = await builder
@@ -71,7 +71,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 }
 
-export default async function Page(props: PageProps) {
+export default async function Page() {
   const builderModelName = "page";
 
   const content = await builder

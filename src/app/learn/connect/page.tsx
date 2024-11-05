@@ -4,6 +4,7 @@ import PhoneSvg from "@/public/icons/phone.svg";
 import AddressSvg from "@/public/icons/address.svg";
 import { getContactDetail } from "@/lib/getContactDetail";
 import { ContactDetail } from "types/types";
+
 import "@/styles/connect.css";
 import ContactHeader from "../contact/contactHeader";
 

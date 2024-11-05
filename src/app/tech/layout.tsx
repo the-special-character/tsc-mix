@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { builder } from "@builder.io/sdk";
-import localFont from "next/font/local";
 import "./globals.css";
 import { RenderBuilderContent } from "@/components/builder";
-import { Suspense } from "react";
-import Header, { HeaderSkeleton } from "@/components/Common/Header";
-import { Kumbh_Sans, Flow_Block } from "next/font/google";
-import SideNav, { SideNavSkeleton } from "@/components/Common/Sidenav";
 import Navbar from "@/components/Navbar";
 
 type SetionProps = {
