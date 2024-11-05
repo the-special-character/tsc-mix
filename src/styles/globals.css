@@ -1,4 +1,3 @@
-@config "../../tailwind.config.ts";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,7 +48,7 @@
     --color-yellow: 255 219 59;
     --color-gray: 224 224 224;
     --color-darkblue: 2 19 43;
-    --color-darkblue1: 23 15 27;  
+    --color-darkblue1: 23 15 27;
     --color-darkblue2: 13 20 39;
     --color-gray1: 234 236 235;
     --color-lightpink: 255 250 227;
@@ -58,6 +57,7 @@
     --color-skyblue: 33 141 228;
     --color-specialblue: 30 61 96;
     --color-offwhite: 0 0% 80%;
+    --color-white: 255 255 255;
   }
 
   .dark {
@@ -91,7 +91,7 @@
   }
 
   h1 {
-    @apply mb-6 font-serif text-neutral-800 text-heading1 ;
+    @apply mb-6 font-serif text-neutral-800 text-heading1;
   }
 
   h2 {
@@ -99,7 +99,7 @@
   }
 
   h3 {
-    @apply mb-4 text-xl text-neutral-700 text-heading3 ;
+    @apply mb-4 text-xl text-neutral-700 text-heading3;
   }
 
   h4 {

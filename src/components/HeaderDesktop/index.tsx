@@ -43,7 +43,7 @@ const HeaderDesktop = () => {
   return (
     <div className="sticky z-40 flex items-center justify-between py-2  duration-300">
       <ScrollDiv />
-      <Link prefetch={false} href="/tech">
+      <Link prefetch={false} href="/">
         <p className="sr-only">The Special Character Logo</p>
         <TscLogoSvg
           className="header__tsclogo md:hidden lg:block fill-[#0f437f]"
@@ -65,7 +65,7 @@ const HeaderDesktop = () => {
             return (
               <li key={order} className="">
                 <Link
-                  href={url ? `/tech/${url}` : ""}
+                  href={url ? `/tech${url}` : ""}
                   prefetch={false}
                   className="header__link"
                 >
@@ -89,7 +89,7 @@ const HeaderDesktop = () => {
                           <li key={y.order}>
                             <Link
                               prefetch={false}
-                              href={y?.url ? `/tech/${y?.url}` : ""}
+                              href={y?.url ? `/tech${y?.url}` : ""}
                               className="header__link"
                             >
                               {y?.title}
@@ -106,7 +106,7 @@ const HeaderDesktop = () => {
         </ul>
       </nav>
       <Link
-        href={lastAttribute?.url ? `/tech/${lastAttribute?.url}` : ""}
+        href={lastAttribute?.url ? `/tech${lastAttribute?.url}` : ""}
         prefetch={false}
         className="header__button btn btn--primary btn--small"
       >

@@ -4,12 +4,13 @@ import PhoneSvg from '@/public/icons/phone.svg';
 import AddressSvg from '@/public/icons/address.svg';
 import { getContactDetail } from '@/lib/getContactDetail';
 import { ContactDetail } from 'types/types';
-import ContactHeader from 'app/contact/contactHeader';
+
 import '@/styles/connect.css';
+import ContactHeader from '../contact/contactHeader';
 
-type Props = {};
 
-const Page = (props: Props) => {
+
+const Page = () => {
   const contactDetail = use(getContactDetail());
 
   const { addresses, phoneNumber, email } = contactDetail.data.contactDetail

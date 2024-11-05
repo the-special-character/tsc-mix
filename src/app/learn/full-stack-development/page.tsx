@@ -1,9 +1,9 @@
 import CircleSymbol from '@/public/icons/circle.svg';
 import CheckSymbol from '@/public/icons/check.svg';
 import ButonArrow from '@/public/icons/buton-arrow.svg';
-import Faq from 'app/contact/faq';
+;
 import { Suspense } from 'react';
-import Leaders, { LeadersSkeleton } from 'app/leaders';
+import Leaders, { LeadersSkeleton } from '../leaders';
 
 const BonusesList = [
   {
@@ -380,9 +380,9 @@ const page = () => {
 
         <div>{/* <Separator/> */}</div>
       </section>
-      <Suspense fallback={<LeadersSkeleton />}>
+      <Suspense fallback={<LeadersSkeleton/>}>
         {/* @ts-expect-error Async Server Component */}
-        <Leaders />
+        <Leaders/>
       </Suspense>
       <section className="text-white grid gap-6 px-container md:grid-cols-2">
         <div className="">
