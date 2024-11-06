@@ -59,7 +59,7 @@ export default function TscContainer({ sections }: TscContainerProps) {
   const isNonDesktop = viewportSize === "tablet" || viewportSize === "mobile";
 
   return (
-    <div className={`flex ${isNonDesktop ? "flex-col px-8 pb-8" : ""}`}>
+    <div className={`flex ${isNonDesktop ? "flex-col px-8" : ""}`}>
       {sections.map((section, index) => (
         <motion.div
           key={section.title}
@@ -128,32 +128,32 @@ export default function TscContainer({ sections }: TscContainerProps) {
                   ...(viewportSize === "mobile" ? { duration: 0 } : {}),
                 }}
                 className={cn(
-                  `absolute inset-0 flex items-center justify-center bg-primary`,
+                  `absolute inset-0 flex items-center justify-center bg-primary p-4`,
                   {
                     [`${section.bgActive}`]: activeSection === section.title,
                     [`${section.bgInactive}`]: activeSection === "",
                   }
                 )}
               >
-                <div className="flex flex-col text-black gap-4 bg-secondary1 px-4 py-6 rounded-lg max-w-full sm:max-w-[80%] w-[90%]">
+                <div className="flex flex-col text-black gap-2 lg:gap-4 bg-secondary1 px-4 py-4 rounded-lg max-w-full sm:max-w-[80%] w-[90%]">
                   <Link href={section.link} className="block w-full">
-                    <h1 className="text-2xl sm:text-5xl uppercase leading-none cursor-pointer text-center sm:text-left mb-0 py-2">
+                    <h1 className="text-2xl sm:text-5xl uppercase leading-none cursor-pointer text-center sm:text-left mb-0">
                       {section.title}
                     </h1>
                   </Link>
 
                   {(viewportSize === "desktop" || activeSection === "") && (
                     <>
-                      <p className="text-base sm:text-lg">
+                      <p className="text-base mb-0 sm:text-body1">
                         {section.description}
                       </p>
                       <a
                         href={section.link}
-                        className="inline-block border border-primary rounded-lg px-4 py-2 uppercase text-center mt-2 w-auto"
+                        className="inline-block border border-primary rounded-lg px-4 py-2 uppercase text-center w-auto"
                       >
                         {section.buttonText}
                       </a>
-                      <div className="flex gap-2 flex-wrap mt-2">
+                      <div className="flex gap-2 flex-wrap">
                         <span className="w-5 h-5 border border-primary rounded-full flex items-center justify-center"></span>
                         <span className="w-5 h-5 border border-[#d63227] rounded-full flex items-center justify-center"></span>
                       </div>
