@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import getColors from "@/utils/colors";
 import { usePathname } from "next/navigation";
-import NavbarLogo from "@/public/icons/TSC-logo.svg";
+import NavbarLogo from "@/public/icons/tscTextLogo.svg";
 
 const NavLogo = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
