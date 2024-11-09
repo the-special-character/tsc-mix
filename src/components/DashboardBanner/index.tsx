@@ -32,7 +32,7 @@ const DashboardBanner = () => {
             <TscLogo />
           </div>
         </header>
-        <div className="max-sm:pt-12">
+        <div className="mt-2">
           <h1>The Special Character</h1>
           <p className="text-wrap">
             Build your path to success with our comprehensive IT Courses,
