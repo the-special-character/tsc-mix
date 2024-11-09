@@ -19,7 +19,7 @@ export default function MobileBentoDashboard() {
       </div>
       <main className="flex-1 flex flex-col justify-between max-w-7xl mx-auto w-full">
         <div className=" flex flex-col gap-2 text-center max-w-3xl mx-auto mb-2">
-          <p className="text-heading3 font-bold tracking-tight mb-0 uppercase">
+          <p className="text-heading5 font-bold tracking-tight mb-0 uppercase">
             Next-gen enterprise software development company
           </p>
           <p className="text-gray-500 text-sm md:text-lg tracking-widest">
