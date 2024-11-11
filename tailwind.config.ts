@@ -56,10 +56,7 @@ const config = {
       "8xl": ["52px", "1.3em"],
       "9xl": ["60px", "1.3em"],
     },
-    boxShadow: {
-      base: "0 5px 15px 0 rgb(30 61 96 / 3%)",
-      dark: "0 15px 15px 0.01px rgba(30, 61, 96, 0.03)",
-    },
+
     extend: {
       colors: {
         transparent: "transparent",
@@ -271,7 +268,10 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-
+      boxShadow: {
+        base: "0 5px 15px 0 rgb(30 61 96 / 3%)",
+        dark: "0 15px 15px 0.01px rgba(30, 61, 96, 0.03)",
+      },
       keyframes: {
         shimmer: {
           "100%": {
