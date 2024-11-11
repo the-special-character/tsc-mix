@@ -106,7 +106,7 @@ const HeaderDesktop = () => {
         </ul>
       </nav>
       <Link
-        href={lastAttribute?.url ? `/tech${lastAttribute?.url}` : ""}
+        href={lastAttribute?.url ? `${lastAttribute?.url}` : ""}
         prefetch={false}
         className="header__button btn btn--primary btn--small"
       >
