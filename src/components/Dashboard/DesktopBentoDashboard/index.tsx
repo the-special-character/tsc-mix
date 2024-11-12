@@ -1,42 +1,51 @@
 "use client";
-
-import Image from "next/image";
-import HiringImage from "@/public/images/blog1.webp";
-import Serviceimage from "@/public/images/blog6.webp";
-import Learnimage from "@/public/images/cloudBanner.webp";
 import TscLogo from "@/public/icons/tscTextLogo.svg";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import Phone from "@/public/icons/phone.svg";
+import LearnPerk from "@/public/icons/perks1.svg";
+import HiringPerk from "@/public/icons/perks.svg";
+import TechPerk from "@/public/icons/perks2.svg";
+import React from "react";
+import Image from "next/image";
+import BiAnimatedWords from "@/components/builder-io/BiAnimatedWords";
+import AnimatedWords from "@/components/AnimatedWords";
+import StackCards from "../StackCards";
 
 export default function DesktopBentoDashboard() {
   const cardData = [
     {
-      image: HiringImage,
-      alt: "Hiring",
-      color: "bg-secondary4",
+      image: LearnPerk,
+      alt: "Learning",
+      color: "bg-secondary3",
       href: "learn",
+      title: "Learning",
     },
     {
-      image: Serviceimage,
+      image: TechPerk,
       alt: "Services",
       color: "bg-secondary2",
       href: "tech",
+      title: "Services",
     },
     {
-      image: Learnimage,
-      alt: "Learning",
-      color: "bg-secondary3",
-      href: "",
+      image: HiringPerk,
+      alt: "Hiring",
+      color: "bg-secondary4",
+      href: "/tech/hiring",
+      title: "Hiring",
     },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(1);
+  const animatedWords = [
+    "Next-gen enterprise",
+    "Educational technology",
+    "Hiring open in",
+  ];
 
   return (
-    <div className="flex flex-col h-screen px-container gap-4 md:gap-6 lg:gap-10 overflow-hidden">
-      <header className="h-20 flex justify-between items-center">
+    <div className="flex flex-col h-screen px-container gap-4 md:gap-6 lg:gap-10 sm:overflow-hidden">
+      <header className="h-20 px-0 flex justify-between items-center">
         <TscLogo className="w-36 py-4 md:py-3 lg:py-2" />
         <a
           href={`/learn/contact`}
@@ -54,34 +63,41 @@ export default function DesktopBentoDashboard() {
             Build your path to success with us.
           </p>
         </div>
-        <div className="flex-1 pb-2 md:pb-3 lg:p-0">
-          <div className="flex flex-wrap w-full h-full lg:pt-10 gap-2 md:gap-3 lg:gap-4">
+        <div className="hidden sm:block flex-1 pb-2 md:pb-3 lg:p-0">
+          <div className="flex flex-wrap w-full h-full lg:pt-12 gap-2 md:gap-3 lg:gap-4">
             {cardData?.map((card, cardIndex) => (
               <a
                 href={card.href}
                 key={cardIndex}
                 className={cn(
-                  "flex-1 rounded-2xl lg:rounded-b-none bg-secondary3 basis-80 transition-transform duration-200 shadow-md lg:shadow-2xl z-15",
+                  "flex-1 rounded-2xl lg:rounded-b-none bg-secondary3 basis-80 transition-all duration-300 ease-in-out shadow-md lg:shadow-2xl z-15 relative flex flex-col items-center justify-center",
                   {
-                    "lg:scale-y-150 lg:scale-x-[1.10] lg:translate-z-4":
+                    "lg:scale-y-[1.40] lg:scale-x-[1.10] lg:translate-z-4 z-20":
                       hoveredIndex === cardIndex,
+                    "z-10": hoveredIndex !== cardIndex,
                     [card.color]: true,
                   }
                 )}
                 onMouseEnter={() => setHoveredIndex(cardIndex)}
                 onMouseLeave={() => setHoveredIndex(1)}
               >
-                {/* <div></div>
-                <div>
-                  <h2>Lorem ipsum dolor sit amet.</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Illum, nihil.
-                  </p>
-                </div> */}
+                {React.createElement(card.image, {
+                  className: cn(
+                    "max-lg:hidden absolute left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out",
+                    hoveredIndex === cardIndex
+                      ? "top-[35%] -translate-y-1/2 scale-100"
+                      : "-top-12 scale-125"
+                  ),
+                })}
+                <h2 className="absolute lg:bottom-10 transition-all duration-300 m-0 text-heading3">
+                  {card.title}
+                </h2>
               </a>
             ))}
           </div>
+        </div>
+        <div className="sm:hidden">
+          <StackCards />
         </div>
       </main>
     </div>
