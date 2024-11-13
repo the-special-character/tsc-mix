@@ -1,14 +1,11 @@
 "use client";
 import TscLogo from "@/public/icons/tscTextLogo.svg";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 import LearnPerk from "@/public/icons/perks1.svg";
 import HiringPerk from "@/public/icons/perks.svg";
-import TechPerk from "@/public/icons/perks2.svg";
+import TechPerk from "@/public/icons/perks3.svg";
 import React from "react";
-import Image from "next/image";
-import BiAnimatedWords from "@/components/builder-io/BiAnimatedWords";
-import AnimatedWords from "@/components/AnimatedWords";
 import StackCards from "../StackCards";
 
 export default function DesktopBentoDashboard() {
@@ -37,11 +34,12 @@ export default function DesktopBentoDashboard() {
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(1);
-  const animatedWords = [
-    "Next-gen enterprise",
-    "Educational technology",
-    "Hiring open in",
-  ];
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    setTooltipPosition({ x: e.clientX + 10, y: e.clientY + 10 });
+  }, []);
 
   return (
     <div className="flex flex-col h-screen px-container gap-4 md:gap-6 lg:gap-10 sm:overflow-hidden">
@@ -60,7 +58,8 @@ export default function DesktopBentoDashboard() {
             Next-gen enterprise Company
           </h1>
           <p className="text-gray-500 text-sm md:text-lg tracking-widest">
-            Build your path to success with us.
+            Build your path to success with us. Build your path to success
+            withBuild your path to success with us.
           </p>
         </div>
         <div className="hidden sm:block flex-1 pb-2 md:pb-3 lg:p-0">
@@ -78,8 +77,15 @@ export default function DesktopBentoDashboard() {
                     [card.color]: true,
                   }
                 )}
-                onMouseEnter={() => setHoveredIndex(cardIndex)}
-                onMouseLeave={() => setHoveredIndex(1)}
+                onMouseEnter={() => {
+                  setHoveredIndex(cardIndex);
+                  setShowTooltip(true);
+                }}
+                onMouseLeave={() => {
+                  setHoveredIndex(1);
+                  setShowTooltip(false);
+                }}
+                onMouseMove={handleMouseMove}
               >
                 {React.createElement(card.image, {
                   className: cn(
@@ -89,14 +95,30 @@ export default function DesktopBentoDashboard() {
                       : "-top-12 scale-125"
                   ),
                 })}
-                <h2 className="absolute lg:bottom-10 transition-all duration-300 m-0 text-heading3">
+                <h2 className="absolute lg:bottom-10 transition-all duration-300 ease-in-out m-0 text-heading3">
                   {card.title}
                 </h2>
               </a>
             ))}
           </div>
         </div>
-        <div className="sm:hidden">
+        {showTooltip && hoveredIndex !== null && (
+          <div
+            className="fixed pointer-events-none px-4 py-2 rounded-full text-sm backdrop-blur-lg bg-black/50 text-white shadow-lg shadow-black/10 border border-white/50 tracking-wider"
+            style={{
+              left: `${tooltipPosition.x}px`,
+              top: `${tooltipPosition.y}px`,
+              transform: "translate(-10%, 10%)",
+              zIndex: 50,
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              {cardData[hoveredIndex].title}
+            </div>
+          </div>
+        )}
+        <div className="sm:hidden flex-1 relative">
           <StackCards />
         </div>
       </main>
