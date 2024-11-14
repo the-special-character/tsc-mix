@@ -118,7 +118,7 @@ export default function DesktopBentoDashboard() {
             </div>
           </div>
         )}
-        <div className="sm:hidden flex-1 relative">
+        <div className="sm:hidden flex-1">
           <StackCards />
         </div>
       </main>

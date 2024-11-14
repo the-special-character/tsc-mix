@@ -13,21 +13,21 @@ export default function MobileBentoDashboard() {
   ];
 
   return (
-    <div className="h-dvh bg-gray-50 flex flex-col gap-2 p-4 overflow-hidden">
-      <div className="w-full flex items-center justify-center h-16">
-        <TscLogo className="w-44 sm:w-56" />
-      </div>
-      <main className="flex-1 flex flex-col justify-between max-w-7xl mx-auto w-full">
+    <div className="h-screen bg-gray-50 flex flex-col gap-2 p-4 overflow-hidden">
+      <header className="h-20 px-0 flex justify-between items-center">
+        <TscLogo className="w-44" />
+      </header>
+      <main className="flex-1 flex flex-col justify-between mx-auto h-full w-full">
         <div className=" flex flex-col gap-2 text-center max-w-3xl mx-auto mb-2">
-          <p className="text-heading5 font-bold tracking-tight mb-0 uppercase">
+          <h1 className="font-bold tracking-tight mb-0 uppercase line-clamp-2">
             Next-gen enterprise software development company
-          </p>
+          </h1>
           <p className="text-gray-500 text-sm md:text-lg tracking-widest">
             Build your path to success with us.
           </p>
         </div>
 
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-1 flex-col gap-2 w-full">
           {cardData?.map((card, cardIndex) => (
             <Card
               key={cardIndex}
