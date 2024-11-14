@@ -14,14 +14,14 @@ export default function DesktopBentoDashboard() {
       image: LearnPerk,
       alt: "Learning",
       color: "bg-secondary4",
-      href: "learn",
+      href: "/learn",
       title: "Learning",
     },
     {
       image: TechPerk,
       alt: "Services",
       color: "bg-secondary2",
-      href: "tech",
+      href: "/tech",
       title: "Services",
     },
     {
@@ -43,9 +43,9 @@ export default function DesktopBentoDashboard() {
 
   return (
     <div className="h-screen flex flex-col px-container">
-      <div className="h-[50dvh] sm:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-10 sm:overflow-hidden">
+      <div className="h-[50dvh] sm:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 sm:overflow-hidden">
         <header className="h-20 px-0 flex justify-between items-center">
-          <TscLogo className="w-36 py-4 md:py-3 lg:py-2" />
+          <TscLogo className="w-36 sm:w-44 py-2 md:py-3 lg:py-2" />
           <a
             href={`/learn/contact`}
             className="max-md:hidden btn btn--primary btn--small"
@@ -53,15 +53,14 @@ export default function DesktopBentoDashboard() {
             Contact
           </a>
         </header>
-        <main className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-32">
-          <div className="max-w-5xl text-center mx-auto">
+        <main className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-24 xl:gap-32">
+          <div className="max-sm:flex-1 max-w-5xl text-center mx-auto flex flex-col gap-2 items-center ">
             <h1 className="uppercase m-0 line-clamp-2 font-sans">
               Next-gen enterprise Company
             </h1>
             <p className="text-gray-500 text-sm md:text-lg tracking-widest line-clamp-4">
               Build your path to success with us. Build your path to success
-              withBuild your path to success with us. Build your path to success
-              withBuild your path to success with us.
+              withBuild your path to success with us.Build your path to success
             </p>
           </div>
           <div className="hidden sm:block flex-1 pb-2 md:pb-3 lg:p-0">
@@ -122,7 +121,7 @@ export default function DesktopBentoDashboard() {
           )}
         </main>
       </div>
-      <div className="sm:hidden h-[calc(100vh-50vh)] overflow-y-auto">
+      <div className="sm:hidden h-[calc(100vh-50vh)] overflow-y-auto no-scrollbar">
         <StackCards />
       </div>
     </div>
