@@ -60,8 +60,8 @@
     --color-white: 255 255 255;
 
     --cards: 3;
-    --cardHeight: 87vh;
-    --cardTopPadding: 1.5em;
+    --cardHeight: 41vh;
+    --cardTopPadding: 1em;
     --cardMargin: 3vw;
   }
 

@@ -1,6 +1,7 @@
 import React from "react";
-import LogoImage from "@/public/images/Career-honesty-1.webp";
-import Image from "next/image";
+import LearnImage from "@/public/icons/education.svg";
+import TechImage from "@/public/icons/developing.svg";
+import HiringImage from "@/public/icons/whiteLabelResourse.svg";
 
 interface CardProps {
   id: string;
@@ -39,25 +40,19 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
     <div className="w-full">
       <div className="grid grid-cols-1 gap-4" id="stack_cards">
         {cards.map((card, index) => (
-          <div id={card.id} className="stack_card sticky top-0">
+          <div
+            // id={card.id}
+            className="stack_card sticky top-0"
+            style={{
+              paddingTop:
+                index === 0 ? "0" : `calc(${index} * var(--cardTopPadding))`,
+            }}
+          >
             <div
               className={`stack_card-body box-border p-4 rounded-3xl
             flex flex-col items-center gap-2 transition-all duration-300 ${card.backgroundColor}`}
             >
-              <div className="relative aspect-square w-full">
-                <Image
-                  src={LogoImage}
-                  alt="image"
-                  fill
-                  className="object-cover"
-                />
-              </div>
               <h2 className="m-0">{card.title}</h2>
-              <p className="text-center leading-6 tracking-widest">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Perspiciatis dolores alias ullam. Nesciunt, dolore eligendi
-                aperiam inventore.
-              </p>
             </div>
           </div>
         ))}
