@@ -121,7 +121,7 @@ export default function DesktopBentoDashboard() {
           )}
         </main>
       </div>
-      <div className="md:hidden h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar">
+      <div className="md:hidden h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar snap-y snap-mandatory">
         <StackCards />
       </div>
     </div>

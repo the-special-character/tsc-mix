@@ -56,7 +56,7 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
         {cards.map((card, index) => (
           <div
             key={card.id}
-            className="sticky top-0"
+            className="sticky top-0 snap-start"
             style={{
               paddingTop: `calc(${index}*${cardTopPadding})`,
             }}
