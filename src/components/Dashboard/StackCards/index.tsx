@@ -1,18 +1,18 @@
-import React from "react"
-import LearnImage from "@/public/icons/heroEducation.svg"
-import TechImage from "@/public/icons/heroDeveloper.svg"
-import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg"
+import React from "react";
+import LearnImage from "@/public/icons/heroEducation.svg";
+import TechImage from "@/public/icons/heroDeveloper.svg";
+import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg";
 
 interface CardProps {
-  id: string
-  title: string
-  href: string
-  backgroundColor: string
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  id: string;
+  title: string;
+  href: string;
+  backgroundColor: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 interface StackCardsProps {
-  cards?: CardProps[]
+  cards?: CardProps[];
 }
 
 const defaultCards: CardProps[] = [
@@ -37,17 +37,15 @@ const defaultCards: CardProps[] = [
     backgroundColor: "bg-secondary3",
     icon: HiringImage,
   },
-]
+];
 
 const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
-  const cardHeight = "41dvh"
-  const cardTopPadding = "1em"
-  const cardMargin = "1dvw"
-  
-
+  const cardHeight = "41dvh";
+  const cardTopPadding = "1em";
+  const cardMargin = "1dvw";
 
   return (
-    <div  className="w-full ">
+    <div className="w-full ">
       <div
         className="grid grid-cols-1 relative"
         style={{
@@ -57,12 +55,13 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
         }}
       >
         {cards.map((card, index) => {
-          const reversedIndex = cards.length - 1 - index
-          const scale = 1 - (reversedIndex * 0.04)
-          
+          const reversedIndex = cards.length - 1 - index;
+          const scale = 1 - reversedIndex * 0.04;
+
           return (
-            <div
+            <a
               key={card.id}
+              href={card.href}
               className="sticky top-0 snap-start"
               style={{
                 paddingTop: `calc(${index}*${cardTopPadding})`,
@@ -73,7 +72,8 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
                 style={{
                   height: `${cardHeight}`,
                   transform: `scale(${scale}) `,
-                  boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                  boxShadow:
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
                   position: "relative",
                   zIndex: index,
                 }}
@@ -81,14 +81,14 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
                 <div className="relative aspect-square w-32 flex justify-center items-center">
                   {React.createElement(card.icon)}
                 </div>
-                <h2 className="m-0">{card.title}</h2>
+                <h2 className="m-0 font-sans">{card.title}</h2>
               </div>
-            </div>
-          )
+            </a>
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StackCards
+export default StackCards;
