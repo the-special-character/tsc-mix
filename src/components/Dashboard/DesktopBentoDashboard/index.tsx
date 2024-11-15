@@ -1,12 +1,14 @@
-"use client";
-import TscLogo from "@/public/icons/tscTextLogo.svg";
-import { useCallback, useState } from "react";
-import { cn } from "@/lib/utils";
-import LearnPerk from "@/public/icons/perks1.svg";
-import HiringPerk from "@/public/icons/perks.svg";
-import TechPerk from "@/public/icons/perks3.svg";
-import React from "react";
-import StackCards from "../StackCards";
+'use client'
+import React from "react"
+import TscLogo from "@/public/icons/tscTextLogo.svg"
+import { useCallback, useState, useEffect } from "react"
+import { cn } from "@/lib/utils"
+import LearnPerk from "@/public/icons/perks1.svg"
+import HiringPerk from "@/public/icons/perks.svg"
+import TechPerk from "@/public/icons/perks3.svg"
+import StackCards from "../StackCards"
+import ScrollUp from '@/public/icons/scroll-up.svg'
+
 
 export default function DesktopBentoDashboard() {
   const cardData = [
@@ -31,19 +33,30 @@ export default function DesktopBentoDashboard() {
       href: "/tech/hiring",
       title: "Hiring",
     },
-  ];
+  ]
 
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(1);
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(1)
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [fadeOut, setFadeOut] = useState(false)
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    setTooltipPosition({ x: e.clientX + 10, y: e.clientY + 10 });
-  }, []);
+    setTooltipPosition({ x: e.clientX + 10, y: e.clientY + 10 })
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFadeOut(true)
+    }, 4000)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
 
   return (
     <div className="h-dvh flex flex-col px-container overflow-hidden">
-      <div className="h-[50dvh] md:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 md:overflow-hidden">
+      <div className="h-[50dvh] md:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 ">
         <header className="h-20 px-0 flex justify-between items-center">
           <TscLogo className="w-36 sm:w-44 py-2 md:py-3 lg:py-2" />
           <a
@@ -79,12 +92,12 @@ export default function DesktopBentoDashboard() {
                     }
                   )}
                   onMouseEnter={() => {
-                    setHoveredIndex(cardIndex);
-                    setShowTooltip(true);
+                    setHoveredIndex(cardIndex)
+                    setShowTooltip(true)
                   }}
                   onMouseLeave={() => {
-                    setHoveredIndex(1);
-                    setShowTooltip(false);
+                    setHoveredIndex(1)
+                    setShowTooltip(false)
                   }}
                   onMouseMove={handleMouseMove}
                 >
@@ -120,10 +133,26 @@ export default function DesktopBentoDashboard() {
             </div>
           )}
         </main>
+       
+       
       </div>
-      <div className="md:hidden h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar snap-y snap-mandatory">
+      <div className="md:hidden h-[calc(100dvh-50dvh)]  overflow-y-auto no-scrollbar snap-y snap-mandatory">
+     
         <StackCards />
       </div>
+      
+  <div
+    className={`sm:hidden text-center py-2 text-primary tracking-widest transition-opacity duration-500 fixed bottom-0 left-0 w-full ${
+      fadeOut ? "opacity-0" : "opacity-100"
+    }`}
+  >
+    <div className="flex flex-col items-center">
+    <ScrollUp className="w-5 h-5 animate-bounce" />
+    Scroll to reveal services
     </div>
-  );
+  </div>
+
+
+    </div>
+  )
 }

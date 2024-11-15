@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react"
+import React from "react"
 import LearnImage from "@/public/icons/heroEducation.svg"
 import TechImage from "@/public/icons/heroDeveloper.svg"
 import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg"
@@ -43,32 +43,13 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
   const cardHeight = "41dvh"
   const cardTopPadding = "1em"
   const cardMargin = "1dvw"
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [scrollPosition, setScrollPosition] = useState(0)
+  
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        setScrollPosition(containerRef.current.scrollTop)
-      }
-    }
-
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener('scroll', handleScroll)
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener('scroll', handleScroll)
-      }
-    }
-  }, [])
 
   return (
-    <div ref={containerRef} className="w-full h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar snap-y snap-mandatory">
+    <div  className="w-full ">
       <div
-        className="grid grid-cols-1 gap-8 relative"
+        className="grid grid-cols-1 relative"
         style={{
           gridTemplateRows: `repeat(${cards.length}, ${cardHeight})`,
           paddingBottom: `calc(${cards.length}*${cardTopPadding})`,
@@ -77,7 +58,7 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
       >
         {cards.map((card, index) => {
           const reversedIndex = cards.length - 1 - index
-          const scale = 1 - (reversedIndex * 0.03)
+          const scale = 1 - (reversedIndex * 0.04)
           
           return (
             <div
