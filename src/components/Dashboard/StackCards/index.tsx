@@ -7,7 +7,6 @@ interface CardProps {
   id: string;
   title: string;
   href: string;
-  index: number;
   backgroundColor: string;
   icon: any;
 }
@@ -21,7 +20,6 @@ const defaultCards: CardProps[] = [
     id: "stack_card1",
     title: "Training",
     href: "/learn",
-    index: 1,
     backgroundColor: "bg-secondary4",
     icon: LearnImage,
   },
@@ -29,7 +27,6 @@ const defaultCards: CardProps[] = [
     id: "stack_card2",
     title: "Services",
     href: "/tech",
-    index: 2,
     backgroundColor: "bg-secondary2",
     icon: TechImage,
   },
@@ -37,27 +34,36 @@ const defaultCards: CardProps[] = [
     id: "stack_card3",
     title: "Hiring",
     href: "/tech/hiring",
-    index: 3,
     backgroundColor: "bg-secondary3",
     icon: HiringImage,
   },
 ];
 
 const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
+  const cardHeight = "41dvh";
+  const cardTopPadding = "1em";
+  const cardMargin = "1dvw";
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 gap-3" id="stack_cards">
+      <div
+        className="grid grid-cols-1 gap-8"
+        style={{
+          gridTemplateRows: `repeat(${cards.length}, ${cardHeight})`,
+          paddingBottom: `calc(${cards.length}*${cardTopPadding})`,
+          marginBottom: `${cardMargin}`,
+        }}
+      >
         {cards.map((card, index) => (
           <div
-            // id={card.id}
-            className="stack_card sticky top-0"
+            key={card.id}
+            className="sticky top-0"
             style={{
-              paddingTop:
-                index === 0 ? "0" : `calc(${index} * var(--cardTopPadding))`,
+              paddingTop: `calc(${index}*${cardTopPadding})`,
             }}
           >
             <div
-              className={`stack_card-body box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-300 ${card.backgroundColor}`}
+              className={`box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-300 ${card.backgroundColor}`}
+              style={{ height: `${cardHeight}` }}
             >
               <div className="relative aspect-square w-32 flex justify-center items-center">
                 {React.createElement(card.icon)}

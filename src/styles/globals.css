@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply min-h-screen font-sans text-lg text-neutral-600;
+    @apply font-sans text-lg text-neutral-600;
 
     display: grid;
     grid-template-columns: min-content [stack] 1fr;
@@ -58,11 +58,6 @@
     --color-specialblue: 30 61 96;
     --color-offwhite: 0 0% 80%;
     --color-white: 255 255 255;
-
-    --cards: 3;
-    --cardHeight: 41vh;
-    --cardTopPadding: 1em;
-    --cardMargin: 3vw;
   }
 
   .dark {
@@ -721,30 +716,6 @@
   display: inline-block;
   mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/350% 100%;
   animation: shimmer 3s infinite;
-}
-
-#stack_cards {
-  grid-template-rows: repeat(var(--cards), var(--cardHeight));
-  padding-bottom: calc(var(--cards) * var(--cardTopPadding));
-  margin-bottom: var(--cardMargin);
-}
-
-#stack_card1 {
-  --index: 1;
-}
-#stack_card2 {
-  --index: 2;
-}
-#stack_card3 {
-  --index: 3;
-}
-
-.stack_card {
-  padding-top: calc(var(--index) * var(--cardTopPadding));
-}
-
-.stack_card-body {
-  height: var(--cardHeight);
 }
 
 @keyframes shimmer {

@@ -42,8 +42,8 @@ export default function DesktopBentoDashboard() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col px-container">
-      <div className="h-[50dvh] sm:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 sm:overflow-hidden">
+    <div className="h-dvh flex flex-col px-container overflow-hidden">
+      <div className="h-[50dvh] md:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 md:overflow-hidden">
         <header className="h-20 px-0 flex justify-between items-center">
           <TscLogo className="w-36 sm:w-44 py-2 md:py-3 lg:py-2" />
           <a
@@ -54,7 +54,7 @@ export default function DesktopBentoDashboard() {
           </a>
         </header>
         <main className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-24">
-          <div className="max-sm:flex-1 max-w-5xl text-center mx-auto flex flex-col gap-2 items-center ">
+          <div className="max-md:flex-1 max-w-5xl text-center mx-auto flex flex-col gap-2 items-center ">
             <h1 className="uppercase m-0 line-clamp-2 font-sans">
               Next-gen enterprise Company
             </h1>
@@ -63,7 +63,7 @@ export default function DesktopBentoDashboard() {
               withBuild your path to success with us.Build your path to success
             </p>
           </div>
-          <div className="hidden sm:block flex-1 pb-2 md:pb-3 lg:p-0">
+          <div className="hidden md:block flex-1 pb-2 md:pb-3 lg:p-0">
             <div className="flex flex-wrap w-full h-full lg:pt-12 gap-2 md:gap-3 lg:gap-4">
               {cardData?.map((card, cardIndex) => (
                 <a
@@ -121,7 +121,7 @@ export default function DesktopBentoDashboard() {
           )}
         </main>
       </div>
-      <div className="sm:hidden h-[calc(100vh-50vh)] overflow-y-auto no-scrollbar">
+      <div className="md:hidden h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar">
         <StackCards />
       </div>
     </div>
