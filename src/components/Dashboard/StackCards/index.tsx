@@ -1,7 +1,7 @@
 import React from "react";
-import LearnImage from "@/public/icons/education.svg";
-import TechImage from "@/public/icons/developing.svg";
-import HiringImage from "@/public/icons/whiteLabelResourse.svg";
+import LearnImage from "@/public/icons/heroEducation.svg";
+import TechImage from "@/public/icons/heroDeveloper.svg";
+import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg";
 
 interface CardProps {
   id: string;
@@ -46,7 +46,7 @@ const defaultCards: CardProps[] = [
 const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 gap-4" id="stack_cards">
+      <div className="grid grid-cols-1 gap-3" id="stack_cards">
         {cards.map((card, index) => (
           <div
             // id={card.id}
@@ -57,11 +57,11 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
             }}
           >
             <div
-              className={`stack_card-body box-border p-4 rounded-3xl flex flex-col items-center gap-2 transition-all duration-300 ${card.backgroundColor}`}
+              className={`stack_card-body box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-300 ${card.backgroundColor}`}
             >
-              {React.createElement(card.icon, {
-                className: "w-24 h-24 z-20",
-              })}
+              <div className="relative aspect-square w-32 flex justify-center items-center">
+                {React.createElement(card.icon)}
+              </div>
               {/* <HiringImage className="w-24 h-24 z-20" /> */}
               <h2 className="m-0">{card.title}</h2>
             </div>

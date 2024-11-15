@@ -53,7 +53,7 @@ export default function DesktopBentoDashboard() {
             Contact
           </a>
         </header>
-        <main className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-24 xl:gap-32">
+        <main className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-24">
           <div className="max-sm:flex-1 max-w-5xl text-center mx-auto flex flex-col gap-2 items-center ">
             <h1 className="uppercase m-0 line-clamp-2 font-sans">
               Next-gen enterprise Company
