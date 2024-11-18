@@ -126,7 +126,7 @@ export default function DesktopBentoDashboard() {
                     {card.title}
                   </h2>
                   <div className="absolute transition-all duration-300 ease-in-out flex flex-col flex-wrap justify-center gap-8 max-md:hidden lg:hidden items-center h-full">
-                    {React.createElement(card.icon, { className: "w-24" })}
+                    {React.createElement(card.icon, { className: "w-32" })}
                     <h2 className="m-0 font-sans">{card.title}</h2>
                   </div>
                 </a>
@@ -135,7 +135,7 @@ export default function DesktopBentoDashboard() {
           </div>
           {showTooltip && hoveredIndex !== null && (
             <div
-              className="fixed pointer-events-none px-4 py-2 rounded-full text-sm backdrop-blur-lg bg-black/50 text-white shadow-lg shadow-black/10 border border-white/50 tracking-wider"
+              className="fixed pointer-events-none max-lg:hidden px-4 py-2 rounded-full text-sm backdrop-blur-lg bg-black/50 text-white shadow-lg shadow-black/10 border border-white/50 tracking-wider"
               style={{
                 left: `${tooltipPosition.x}px`,
                 top: `${tooltipPosition.y}px`,

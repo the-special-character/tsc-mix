@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LearnImage from "@/public/icons/heroEducation.svg";
 import TechImage from "@/public/icons/heroDeveloper.svg";
 import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg";
@@ -44,8 +44,29 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
   const cardTopPadding = "1em";
   const cardMargin = "1dvw";
 
+  const [isVisible, setIsVisible] = useState<boolean[]>([]);
+
+  useEffect(() => {
+    // Set all cards as visible one by one
+    const timeouts: NodeJS.Timeout[] = [];
+    const updatedVisibility = cards.map((_, index) => {
+      const timeout = setTimeout(() => {
+        setIsVisible((prev) => [...prev.slice(0, index), true, ...prev.slice(index + 1)]);
+      }, index * 200); // Stagger animation
+      timeouts.push(timeout);
+      return false;
+    });
+
+    setIsVisible(updatedVisibility);
+
+    return () => {
+      // Clear timeouts on unmount
+      timeouts.forEach((timeout) => clearTimeout(timeout));
+    };
+  }, [cards]);
+
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <div
         className="grid grid-cols-1 relative"
         style={{
@@ -68,10 +89,12 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
               }}
             >
               <div
-                className={`box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-300 ${card.backgroundColor}`}
+                className={`box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-500 ${
+                  card.backgroundColor
+                } ${isVisible[index] ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10 "}`}
                 style={{
                   height: `${cardHeight}`,
-                  transform: `scale(${scale}) `,
+                  transform: `scale(${scale})`,
                   boxShadow:
                     "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
                   position: "relative",
