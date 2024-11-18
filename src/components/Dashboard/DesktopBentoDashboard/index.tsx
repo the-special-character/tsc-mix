@@ -1,13 +1,12 @@
 "use client";
-import React from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import TscLogo from "@/public/icons/tscTextLogo.svg";
-import { useCallback, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import LearnPerk from "@/public/icons/perks1.svg";
 import HiringPerk from "@/public/icons/perks.svg";
 import TechPerk from "@/public/icons/perks3.svg";
 import StackCards from "../StackCards";
-import ScrollDown from "@/public/icons/scroll-down.svg";
+import ScrollDownSvg from "@/public/icons/scroll-down.svg";
 
 export default function DesktopBentoDashboard() {
   const cardData = [
@@ -39,6 +38,9 @@ export default function DesktopBentoDashboard() {
   const [showTooltip, setShowTooltip] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
+  // Create a ref for the StackCards container
+  const stackCardsRef = useRef<HTMLDivElement>(null);
+
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     setTooltipPosition({ x: e.clientX + 10, y: e.clientY + 10 });
   }, []);
@@ -51,6 +53,12 @@ export default function DesktopBentoDashboard() {
     return () => {
       clearTimeout(timer);
     };
+  }, []);
+
+  useEffect(() => {
+    if (stackCardsRef.current) {
+      stackCardsRef.current.scrollTop = stackCardsRef.current.scrollHeight;
+    }
   }, []);
 
   return (
@@ -133,7 +141,10 @@ export default function DesktopBentoDashboard() {
           )}
         </main>
       </div>
-      <div className="md:hidden h-[calc(100dvh-50dvh)]  overflow-y-auto no-scrollbar snap-y snap-mandatory">
+      <div
+        ref={stackCardsRef}
+        className="md:hidden h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar snap-y snap-mandatory"
+      >
         <StackCards />
       </div>
 
@@ -143,7 +154,7 @@ export default function DesktopBentoDashboard() {
         }`}
       >
         <div className="flex flex-col items-center">
-          <ScrollDown className="w-5 h-5 animate-bounce" />
+          <ScrollDownSvg className="w-5 h-5 animate-bounce" />
           Scroll to reveal services
         </div>
       </div>
