@@ -7,6 +7,9 @@ import HiringPerk from "@/public/icons/perks.svg";
 import TechPerk from "@/public/icons/perks3.svg";
 import StackCards from "../StackCards";
 import ScrollDownSvg from "@/public/icons/scroll-down.svg";
+import LearnImage from "@/public/icons/heroEducation.svg";
+import TechImage from "@/public/icons/heroDeveloper.svg";
+import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg";
 
 export default function DesktopBentoDashboard() {
   const cardData = [
@@ -16,6 +19,7 @@ export default function DesktopBentoDashboard() {
       color: "bg-secondary4",
       href: "/learn",
       title: "Learning",
+      icon: LearnImage,
     },
     {
       image: TechPerk,
@@ -23,6 +27,7 @@ export default function DesktopBentoDashboard() {
       color: "bg-secondary2",
       href: "/tech",
       title: "Services",
+      icon: TechImage,
     },
     {
       image: HiringPerk,
@@ -30,6 +35,7 @@ export default function DesktopBentoDashboard() {
       color: "bg-secondary3",
       href: "/tech/hiring",
       title: "Hiring",
+      icon: HiringImage,
     },
   ];
 
@@ -116,9 +122,13 @@ export default function DesktopBentoDashboard() {
                         : "-top-12 scale-125"
                     ),
                   })}
-                  <h2 className="absolute lg:bottom-10 transition-all duration-300 ease-in-out m-0 text-heading3">
+                  <h2 className="absolute max-lg:hidden lg:bottom-10 transition-all duration-300 ease-in-out m-0 text-heading3">
                     {card.title}
                   </h2>
+                  <div className="absolute transition-all duration-300 ease-in-out flex flex-col flex-wrap justify-center gap-8 max-md:hidden lg:hidden items-center h-full">
+                    {React.createElement(card.icon, { className: "w-24" })}
+                    <h2 className="m-0 font-sans">{card.title}</h2>
+                  </div>
                 </a>
               ))}
             </div>
