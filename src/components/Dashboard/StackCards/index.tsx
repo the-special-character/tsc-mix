@@ -40,19 +40,22 @@ const defaultCards: CardProps[] = [
 ];
 
 const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
-  const cardHeight = "41dvh";
-  const cardTopPadding = "1em";
-  const cardMargin = "1dvw";
+  const cardHeight = "45dvh";
+  const cardTopPadding = "1.5em";
+  const cardMargin = "16dvw";
 
   const [isVisible, setIsVisible] = useState<boolean[]>([]);
 
   useEffect(() => {
-    // Set all cards as visible one by one
     const timeouts: NodeJS.Timeout[] = [];
     const updatedVisibility = cards.map((_, index) => {
       const timeout = setTimeout(() => {
-        setIsVisible((prev) => [...prev.slice(0, index), true, ...prev.slice(index + 1)]);
-      }, index * 200); // Stagger animation
+        setIsVisible((prev) => [
+          ...prev.slice(0, index),
+          true,
+          ...prev.slice(index + 1),
+        ]);
+      }, index * 600);
       timeouts.push(timeout);
       return false;
     });
@@ -60,7 +63,6 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
     setIsVisible(updatedVisibility);
 
     return () => {
-      // Clear timeouts on unmount
       timeouts.forEach((timeout) => clearTimeout(timeout));
     };
   }, [cards]);
@@ -77,7 +79,7 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
       >
         {cards.map((card, index) => {
           const reversedIndex = cards.length - 1 - index;
-          const scale = 1 - reversedIndex * 0.04;
+          const scale = 1 - reversedIndex * 0.05;
 
           return (
             <a
@@ -89,14 +91,16 @@ const StackCards: React.FC<StackCardsProps> = ({ cards = defaultCards }) => {
               }}
             >
               <div
-                className={`box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-500 ${
+                className={`box-border p-4 rounded-3xl flex flex-col items-center justify-center gap-2 transition-all duration-500 shadow-xl ${
                   card.backgroundColor
-                } ${isVisible[index] ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10 "}`}
+                } ${
+                  isVisible[index]
+                    ? "opacity-100 translate-y-0 "
+                    : "opacity-0 translate-y-10 "
+                }`}
                 style={{
                   height: `${cardHeight}`,
                   transform: `scale(${scale})`,
-                  boxShadow:
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
                   position: "relative",
                   zIndex: index,
                 }}

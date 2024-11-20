@@ -2,39 +2,42 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
 import TscLogo from "@/public/icons/tscTextLogo.svg";
 import { cn } from "@/lib/utils";
-import LearnPerk from "@/public/icons/perks1.svg";
-import HiringPerk from "@/public/icons/perks.svg";
-import TechPerk from "@/public/icons/perks3.svg";
 import StackCards from "../StackCards";
 import ScrollDownSvg from "@/public/icons/scroll-down.svg";
 import LearnImage from "@/public/icons/heroEducation.svg";
 import TechImage from "@/public/icons/heroDeveloper.svg";
 import HiringImage from "@/public/icons/heroWhiteLabelResourse.svg";
+import CursorTooltip from "../CursorTooltip";
+import Image from "next/image";
+import ScrollDown from "@/public/images/scrollDown.gif";
 
 export default function DesktopBentoDashboard() {
   const cardData = [
     {
-      image: LearnPerk,
       alt: "Learning",
       color: "bg-secondary4",
       href: "/learn",
       title: "Learning",
+      description:
+        "Master IT skills with live projects, expert training, and guaranteed 100% placement success.",
       icon: LearnImage,
     },
     {
-      image: TechPerk,
       alt: "Services",
       color: "bg-secondary2",
       href: "/tech",
       title: "Services",
+      description:
+        "Delivering expert IT solutions, services, and innovation for business success.",
       icon: TechImage,
     },
     {
-      image: HiringPerk,
       alt: "Hiring",
       color: "bg-secondary3",
       href: "/tech/hiring",
       title: "Hiring",
+      description:
+        "Join our team and build a rewarding career in innovative IT solutions.",
       icon: HiringImage,
     },
   ];
@@ -42,23 +45,11 @@ export default function DesktopBentoDashboard() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(1);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [showTooltip, setShowTooltip] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
 
-  // Create a ref for the StackCards container
   const stackCardsRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     setTooltipPosition({ x: e.clientX + 10, y: e.clientY + 10 });
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-    }, 4000);
-
-    return () => {
-      clearTimeout(timer);
-    };
   }, []);
 
   useEffect(() => {
@@ -69,8 +60,8 @@ export default function DesktopBentoDashboard() {
 
   return (
     <div className="h-dvh flex flex-col px-container overflow-hidden">
-      <div className="h-[50dvh] md:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 ">
-        <header className="h-20 px-0 flex justify-between items-center">
+      <div className="h-[40dvh] md:h-full sticky top-0 z-20 flex flex-col gap-4 md:gap-6 lg:gap-8 ">
+        <header className="h-16 sm:h-20 px-0 flex justify-between items-center">
           <TscLogo className="w-36 sm:w-44 py-2 md:py-3 lg:py-2" />
           <a
             href={`/learn/contact`}
@@ -84,9 +75,10 @@ export default function DesktopBentoDashboard() {
             <h1 className="uppercase m-0 line-clamp-2 font-sans">
               Next-gen enterprise Company
             </h1>
-            <p className="text-gray-500 text-sm md:text-lg tracking-widest line-clamp-4">
-              Build your path to success with us. Build your path to success
-              withBuild your path to success with us.Build your path to success
+            <p className="text-gray-500 text-sm md:text-lg tracking-widest line-clamp-3">
+              Explore our IT services, career opportunities, and comprehensive
+              learning resources designed to help you enhance your skills and
+              advance your career.
             </p>
           </div>
           <div className="hidden md:block flex-1 pb-2 md:pb-3 lg:p-0">
@@ -114,59 +106,57 @@ export default function DesktopBentoDashboard() {
                   }}
                   onMouseMove={handleMouseMove}
                 >
-                  {React.createElement(card.image, {
-                    className: cn(
-                      "max-lg:hidden absolute left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out",
-                      hoveredIndex === cardIndex
-                        ? "top-[35%] -translate-y-1/2 scale-100"
-                        : "-top-12 scale-125"
-                    ),
-                  })}
-                  <h2 className="absolute max-lg:hidden lg:bottom-10 transition-all duration-300 ease-in-out m-0 text-heading3">
-                    {card.title}
-                  </h2>
-                  <div className="absolute transition-all duration-300 ease-in-out flex flex-col flex-wrap justify-center gap-8 max-md:hidden lg:hidden items-center h-full">
-                    {React.createElement(card.icon, { className: "w-32" })}
-                    <h2 className="m-0 font-sans">{card.title}</h2>
+                  <div
+                    className={cn(
+                      "max-lg:hidden absolute flex flex-col gap-2 items-center transition-all duration-300 ease-in-out",
+                      hoveredIndex === cardIndex &&
+                        "lg:scale-y-[0.71] lg:scale-x-[0.91]"
+                    )}
+                  >
+                    {React.createElement(card.icon, {
+                      className:
+                        "max-lg:hidden  transition-all duration-300 ease-in-out",
+                    })}
+                    <h2 className="m-0 text-heading3 font-sans">
+                      {card.title}
+                    </h2>
+                  </div>
+                  <div className="absolute p-2 transition-all duration-300 ease-in-out flex flex-col gap-2 items-center justify-center flex-wrap max-md:hidden lg:hidden h-full w-full">
+                    {React.createElement(card.icon, { className: "w-28" })}
+                    <div className="max-w-[70%] self-start">
+                      <h2 className="m-0 font-sans text-heading3">
+                        {card.title}
+                      </h2>
+                      <p className="line-clamp-3 text-body2">
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
                 </a>
               ))}
             </div>
           </div>
           {showTooltip && hoveredIndex !== null && (
-            <div
-              className="fixed pointer-events-none max-lg:hidden px-4 py-2 rounded-full text-sm backdrop-blur-lg bg-black/50 text-white shadow-lg shadow-black/10 border border-white/50 tracking-wider"
-              style={{
-                left: `${tooltipPosition.x}px`,
-                top: `${tooltipPosition.y}px`,
-                transform: "translate(-10%, 10%)",
-                zIndex: 50,
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                {cardData[hoveredIndex].title}
-              </div>
-            </div>
+            <CursorTooltip
+              tooltipPosition={tooltipPosition}
+              data={cardData}
+              hoveredIndex={hoveredIndex}
+            />
           )}
         </main>
       </div>
       <div
         ref={stackCardsRef}
-        className="md:hidden h-[calc(100dvh-50dvh)] overflow-y-auto no-scrollbar snap-y snap-mandatory"
+        className="md:hidden h-[calc(100dvh-35dvh)] overflow-y-auto no-scrollbar snap-y snap-mandatory"
       >
         <StackCards />
       </div>
 
       <div
-        className={`sm:hidden text-center py-2 text-primary tracking-widest transition-opacity duration-500 fixed bottom-0 left-0 w-full ${
-          fadeOut ? "opacity-0" : "opacity-100"
-        }`}
+        className={`md:hidden flex gap-2 justify-center items-center font-semibold py-2 text-primary tracking-widest fixed bottom-2 left-0 w-full -z-10 animate-bounce`}
       >
-        <div className="flex flex-col items-center">
-          <ScrollDownSvg className="w-5 h-5 animate-bounce" />
-          Scroll to reveal services
-        </div>
+        <ScrollDownSvg className="w-4 h-4" />
+        <p className="text-body1 ">Pull to reveal services</p>
       </div>
     </div>
   );
