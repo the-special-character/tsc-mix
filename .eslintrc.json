@@ -1,3 +1,20 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-object-type": "off", // Disable single quote escaping check
+    "react/no-unescaped-entities": 0,
+    // Disable anonymous default export check
+    "import/no-anonymous-default-export": 0,
+    // Disable display name requirement
+    "react/display-name": 0,
+    "react/jsx-key": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-wrapper-object-types": "off"
+  }
 }

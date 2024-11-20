@@ -106,10 +106,10 @@ const Header = async (props: Props) => {
         </ul>
       </nav>
       <Link
-        href={`/learn${attributes.url}`}
+        href={`/learn${attributes?.url}`}
         className="header__button btn btn--primary btn--small "
       >
-        {attributes.title}
+        {attributes?.title}
       </Link>
       <a
         href="#sidenav-open"

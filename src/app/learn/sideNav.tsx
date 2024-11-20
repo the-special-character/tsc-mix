@@ -70,7 +70,7 @@ const SideNav = async (props: Props) => {
                           return (
                             <li key={y.id}>
                               <Link
-                                href={y.attributes.url}
+                                href={`/learn${y.attributes.url}`}
                                 className="header__link"
                               >
                                 {y.attributes.title}
@@ -82,7 +82,7 @@ const SideNav = async (props: Props) => {
                     </details>
                   </>
                 ) : (
-                  <a href={`${url}`} className="header__link">
+                  <a href={`/learn${url}`} className="header__link">
                     {title}
                   </a>
                 )}

@@ -1,15 +1,15 @@
-import React from 'react';
-import '@/styles/pageHeader.css';
-import clsx from 'clsx';
-import { getBannerHeaderData } from '@/lib/getBannerHeader';
-import { Banner, ComponentCommonHeaders } from 'types/types';
-import SeparatorArray from './SeparatorArray';
-import { getBannerData } from '@/lib/getBanner';
-import Script from 'next/script';
+import React from "react";
+import "@/styles/pageHeader.css";
+import clsx from "clsx";
+import { getBannerHeaderData } from "@/lib/getBannerHeader";
+import { Banner, ComponentCommonHeaders } from "types/types";
+import SeparatorArray from "./SeparatorArray";
+import { getBannerData } from "@/lib/getBanner";
+import Script from "next/script";
 
 export const PageHeaderSkeleton = () => {
   return (
-    <section className={'page__section animate-pulse'}>
+    <section className={"page__section animate-pulse"}>
       <div className="page__body">
         <div className="page__pages">
           <div className="page__detail">
@@ -51,30 +51,31 @@ const PageHeader = async ({
     ?.attributes as Banner;
 
   return (
-    <section className={clsx('page__section', { [className]: !!className })}>
-      <div className={clsx('page__body', { [className]: !!className })}>
+    <section className={clsx("page__section", { [className]: !!className })}>
+      <div className={clsx("page__body", { [className]: !!className })}>
         <div className="page__pages">
           <div className="page__detail">
             {title && (
               <h1 className="text-neutral-700">
-                {title.split('<br />').map((x) => (
+                {title.split("<br />").map((x) => (
                   <div className="sm:whitespace-nowrap">{x}</div>
                 ))}
               </h1>
             )}
-            {description && <p className='text-center'>{description}</p>}
+            {description && <p className="text-center">{description}</p>}
           </div>
         </div>
         <div
-          className={clsx('circle__right', { [circleRight]: !!circleRight })}
+          className={clsx("circle__right", { [circleRight]: !!circleRight })}
         ></div>
         <div
-          className={clsx('circle__left', { [circleRight]: !circleLeft })}
+          className={clsx("circle__left", { [circleRight]: !circleLeft })}
         ></div>
       </div>
       {hasSeprator && <SeparatorArray />}
       {seo?.structuredData && (
         <Script
+          id={seo.id}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(seo.structuredData),

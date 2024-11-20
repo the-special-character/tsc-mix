@@ -11,10 +11,15 @@ const MobileNavbar = () => {
   return (
     <aside
       id="sidenav-open"
-      style={{ position: "fixed", top: "0px", left: "0px", width: "100%" }}
+      style={{
+        position: "fixed",
+        top: "0px",
+        left: "0px",
+        width: "100%"
+      }}
     >
       <nav>
-        <Link prefetch={false} href="/tech">
+        <Link prefetch={false} href="/">
           <TscLogoSvg className="h-[40px]  fill-[#064EA4]" />
         </Link>
 
@@ -33,7 +38,7 @@ const MobileNavbar = () => {
                             <li key={y.order}>
                               <Link
                                 prefetch={false}
-                                href={y?.url ? `/tech/${y?.url}` : ""}
+                                href={y?.url ? `/tech${y?.url}` : ""}
                                 className="header__link"
                               >
                                 {y?.title}
@@ -46,7 +51,7 @@ const MobileNavbar = () => {
                   </>
                 ) : (
                   <a
-                    href={url ? `/tech/${url}` : ""}
+                    href={url ? `/tech${url}` : ""}
                     // prefetch={false}
                     className="header__link font-bold text-[#0f437f] "
                     style={{ fontSize: "24px" }}
@@ -59,7 +64,7 @@ const MobileNavbar = () => {
           })}
         </ul>
         <a
-          href={lastAttribute?.url ? `/tech/${lastAttribute?.url}` : ""}
+          href={lastAttribute?.url ? `/tech${lastAttribute?.url}` : ""}
           //   prefetch={false}
           className="btn btn--primary btn--small"
         >

@@ -5,10 +5,12 @@ import Header from "../Header";
 
 const Navbar = () => {
   return (
-    <Header>
-      <HeaderDesktop />
+    <>
+      <Header>
+        <HeaderDesktop />
+      </Header>
       <MobileNavbar />
-    </Header>
+    </>
   );
 };
 

@@ -27,7 +27,7 @@
 }
 
 .contentActive {
-  @apply opacity-100 visible animate-fadeinup duration-1000 text-white;
+  @apply opacity-100 visible animate-fadeinup duration-1000 text-[#fff];
 }
 
 .imageAccordionItemImage {

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, {
   useCallback,
@@ -7,10 +7,10 @@ import React, {
   useState,
   PropsWithChildren,
   ReactElement,
-} from 'react';
-import clsx from 'clsx';
-import LeftSvg from '@/public/icons/left-arrow.svg';
-import RightSvg from '@/public/icons/right-arrow.svg';
+} from "react";
+import clsx from "clsx";
+import LeftSvg from "@/public/icons/left-arrow.svg";
+import RightSvg from "@/public/icons/right-arrow.svg";
 
 type Props = {
   isFull?: boolean;
@@ -24,9 +24,9 @@ const Carousal = ({ children, isFull }: Props) => {
   const obCallback = useCallback((entries) => {
     const inter = entries.filter((entry) => entry.isIntersecting);
 
-    console.log(inter[0]?.target.getAttribute('data-key'));
+    console.log(inter[0]?.target.getAttribute("data-key"));
 
-    const index = Number(inter.at(-1)?.target.getAttribute('data-key'));
+    const index = Number(inter.at(-1)?.target.getAttribute("data-key"));
 
     if (index) {
       setIndex(index);
@@ -43,14 +43,14 @@ const Carousal = ({ children, isFull }: Props) => {
 
       const options = {
         root: scrollPort,
-        rootMargin: '0px',
+        rootMargin: "0px",
         threshold: 1,
       };
       const visibleSet = new Set();
       const carousel_observer = new IntersectionObserver(
         (observations) => {
-          for (let observation of observations) {
-            const index = Number(observation.target.getAttribute('data-key'));
+          for (const observation of observations) {
+            const index = Number(observation.target.getAttribute("data-key"));
             if (observation.isIntersecting) {
               visibleSet.add(index);
             } else {
@@ -74,7 +74,7 @@ const Carousal = ({ children, isFull }: Props) => {
         {
           root: scrollPort,
           threshold: 1,
-        },
+        }
       );
 
       for (const item of scrollPort.children) {
@@ -89,7 +89,7 @@ const Carousal = ({ children, isFull }: Props) => {
       scrollerRef.current.scrollTo({
         left:
           scrollerRef.current.scrollLeft + (element.clientWidth - paddingLeft),
-        behavior: 'smooth',
+        behavior: "smooth",
       });
 
       if (element.nextElementSibling) {
@@ -104,7 +104,7 @@ const Carousal = ({ children, isFull }: Props) => {
       scrollerRef.current.scrollTo({
         left:
           scrollerRef.current.scrollLeft - (element.clientWidth - paddingRight),
-        behavior: 'smooth',
+        behavior: "smooth",
       });
 
       if (element.previousElementSibling) {
@@ -120,7 +120,7 @@ const Carousal = ({ children, isFull }: Props) => {
 
       const delta = Math.abs(scrollport.offsetLeft - element.offsetLeft);
       const scrollerPadding = parseInt(
-        getComputedStyle(scrollport)['padding-left'],
+        getComputedStyle(scrollport)["padding-left"]
       );
 
       const pos =
@@ -130,7 +130,7 @@ const Carousal = ({ children, isFull }: Props) => {
 
       scrollport.scrollTo({
         left: pos,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   }, []);
@@ -139,8 +139,8 @@ const Carousal = ({ children, isFull }: Props) => {
     <div className="carousal">
       <ul
         ref={scrollerRef}
-        className={clsx('carousal__scroller', {
-          '!p-0': !!isFull,
+        className={clsx("carousal__scroller", {
+          "!p-0": !!isFull,
         })}
       >
         {React.Children.map(children, (child, index) => {
@@ -179,9 +179,9 @@ const Carousal = ({ children, isFull }: Props) => {
             <div
               key={x}
               onClick={() => moveToIndex(x)}
-              className={clsx('carousal__dot', {
-                'bg-primary duration-200': x === index,
-                'md:hidden': !isFull,
+              className={clsx("carousal__dot", {
+                "bg-primary duration-200": x === index,
+                "md:hidden": !isFull,
               })}
             ></div>
           );

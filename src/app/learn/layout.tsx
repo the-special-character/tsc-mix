@@ -34,6 +34,8 @@ const flowBlock = Flow_Block({
   preload: true,
 });
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(): Promise<Metadata> {
   const metaData = await getSEOData("home");
 
