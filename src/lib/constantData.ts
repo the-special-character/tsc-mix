@@ -74,7 +74,7 @@ export const headerData = [
   {
     order: 4,
     title: "Hiring",
-    url: "/hiring",
+    url: "hiring",
     children: [],
   },
 ];
