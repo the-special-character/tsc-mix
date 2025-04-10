@@ -1,36 +1,36 @@
 export const headerData = [
-  {
-    order: 0,
-    title: "Services",
-    url: "",
-    children: [
-      {
-        order: 0,
-        title: "Mobile",
-        url: "/services/mobile",
-      },
-      {
-        order: 1,
-        title: "Web",
-        url: "/services/web",
-      },
-      {
-        order: 2,
-        title: "Saas",
-        url: "/services/saas",
-      },
-      {
-        order: 3,
-        title: "Ui/Ux-Design",
-        url: "/services/ui-ux-design",
-      },
-      {
-        order: 4,
-        title: "Corporate-Training",
-        url: "/services/corporate-training",
-      },
-    ],
-  },
+  // {
+  //   order: 0,
+  //   title: "Services",
+  //   url: "",
+  //   children: [
+  //     {
+  //       order: 0,
+  //       title: "Mobile",
+  //       url: "/services/mobile",
+  //     },
+  //     {
+  //       order: 1,
+  //       title: "Web",
+  //       url: "/services/web",
+  //     },
+  //     {
+  //       order: 2,
+  //       title: "Saas",
+  //       url: "/services/saas",
+  //     },
+  //     {
+  //       order: 3,
+  //       title: "Ui/Ux-Design",
+  //       url: "/services/ui-ux-design",
+  //     },
+  //     {
+  //       order: 4,
+  //       title: "Corporate-Training",
+  //       url: "/services/corporate-training",
+  //     },
+  //   ],
+  // },
   {
     order: 1,
     title: "Industry",
