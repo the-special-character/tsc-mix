@@ -1003,6 +1003,12 @@ Builder.registerComponent(
         type: "number",
         defaultValue: 5,
       },
+      {
+        name: "varient",
+        type: "string",
+        enum: ["header", "contactform"],
+        defaultValue: "header",
+      },
     ],
   }
 );

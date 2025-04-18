@@ -21,6 +21,7 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { ChevronDownIcon, Cross1Icon } from "@radix-ui/react-icons";
+import ContactFormTech from "../ContactFormTech";
 
 const HeaderDesktop = ({ servicesData }: any) => {
   const lastAttribute = headerData.at(-1);
@@ -96,7 +97,7 @@ const HeaderDesktop = ({ servicesData }: any) => {
                 style={{ height: "100dvh", padding: "0px" }}
                 className="w-full p-0 border-none overflow-y-scroll "
               >
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_20%] h-full relative">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_21%] h-full relative">
                   <div
                     className={`relative bg-primary transition-all duration-700 ease-out ${
                       animateBackground
@@ -181,15 +182,25 @@ const HeaderDesktop = ({ servicesData }: any) => {
                   </div>
 
                   <div
-                    className={`bg-white p-8 flex flex-col justify-center transition-all duration-700 ease-out ${
+                    className={`bg-white p-8 flex flex-col gap-6 transition-all duration-700 ease-out ${
                       animateBackground
                         ? "opacity-100 translate-x-0"
                         : "opacity-0 translate-x-12"
                     }`}
                   >
-                    <h3 className="text-2xl font-bold mb-6 text-gray-800">
+                    {/* <h3 className="text-2xl font-bold mb-6 text-gray-800">
                       Get in Touch
-                    </h3>
+                    </h3> */}
+                    <TscLogoSvg
+                      className="header__tsclogo md:hidden lg:block fill-[#0f437f] self-center"
+                      style={{
+                        fill: "#0f437f",
+                      }}
+                    />
+                    <div className="flex flex-col gap-2 py-4">
+                      <h3 className="text-heading5 font-bold">Contact Us</h3>
+                      <ContactFormTech />
+                    </div>
                   </div>
                 </div>
               </SheetContent>

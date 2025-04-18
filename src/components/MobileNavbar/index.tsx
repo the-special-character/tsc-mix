@@ -3,13 +3,13 @@ import React from "react";
 import Link from "next/link";
 import "@/styles/sideNav.css";
 import "@/styles/header.css";
-import { headerData } from "@/lib/constantData";
+import { mobileHeaderData } from "@/lib/constantData";
 import TscLogoSvg from "@/public/icons/tscLogo.svg";
 import CloseIcon from "@/public/icons/close-icon.svg";
 import { Button } from "../ui/button";
 
 const MobileNavbar = () => {
-  const lastAttribute = headerData.at(-1);
+  const lastAttribute = mobileHeaderData.at(-1);
 
   return (
     <aside
@@ -36,7 +36,7 @@ const MobileNavbar = () => {
         </div>
 
         <ul>
-          {headerData?.slice(0, -1).map((x) => {
+          {mobileHeaderData?.slice(0, -1).map((x) => {
             const { title, url, children, order } = x;
             return (
               <li key={order}>
