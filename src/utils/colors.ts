@@ -12,10 +12,10 @@ const data: PageData[] = [
   {
     path: "/tech",
     bgColor: "bg-transparent",
-    color: "text-[#0f437f]",
-    hover: "hover:bg-background",
-    children_menu: "bg-background text-[#0f437f]",
-    fillcolor: "#0f437f",
+    color: "text-background",
+    hover: "hover:bg-transparent",
+    children_menu: "bg-white text-[#0f437f]",
+    fillcolor: "white",
     bannerbg: "",
   },
   {

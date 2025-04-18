@@ -2,12 +2,16 @@ import React from "react";
 import MobileNavbar from "../MobileNavbar";
 import HeaderDesktop from "../HeaderDesktop";
 import Header from "../Header";
+import { builder } from "@builder.io/sdk";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const servicesDataRes = await builder.get("header");
+  const servicesData = servicesDataRes?.data?.headerData;
+
   return (
     <>
       <Header>
-        <HeaderDesktop />
+        <HeaderDesktop servicesData={servicesData} />
       </Header>
       <MobileNavbar />
     </>
