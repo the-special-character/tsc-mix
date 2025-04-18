@@ -131,23 +131,28 @@ const HeaderDesktop = ({ servicesData }: any) => {
                           <ul>
                             {column.data.map((service: any) => (
                               <li key={service.title} className="mt-4">
-                                <Link
-                                  href={service.url}
-                                  className="text-white text-body1 flex items-center gap-2"
-                                >
-                                  <Arrow className="h-5 w-5" /> {service.title}
-                                </Link>
+                                <SheetClose asChild>
+                                  <Link
+                                    href={service.url}
+                                    className="text-white text-body1 flex items-center gap-2"
+                                  >
+                                    <Arrow className="h-5 w-5" />{" "}
+                                    {service.title}
+                                  </Link>
+                                </SheetClose>
                                 {service.childlist.length > 0 && (
                                   <ul className="ml-4">
                                     {service.childlist.map((child: any) => (
                                       <li key={child.title} className="mt-1">
-                                        <Link
-                                          href={child.url}
-                                          className="text-white text-subtitle1 flex items-center gap-2"
-                                        >
-                                          <PointArrow className="h-4 w-5 fill-white" />
-                                          {child.title}
-                                        </Link>
+                                        <SheetClose asChild>
+                                          <Link
+                                            href={child.url}
+                                            className="text-white text-subtitle1 flex items-center gap-2"
+                                          >
+                                            <PointArrow className="h-4 w-5 fill-white" />
+                                            {child.title}
+                                          </Link>
+                                        </SheetClose>
                                         {child.grandchildlist &&
                                           child.grandchildlist.length > 0 && (
                                             <ul className="ml-8">
@@ -157,13 +162,15 @@ const HeaderDesktop = ({ servicesData }: any) => {
                                                     key={grandchild.title}
                                                     className="mt-1"
                                                   >
-                                                    <Link
-                                                      href={grandchild.url}
-                                                      className="text-white text-caption1 flex items-center gap-2"
-                                                    >
-                                                      <TriangledArrow className="h-3 w-5 fill-white" />
-                                                      {grandchild.title}
-                                                    </Link>
+                                                    <SheetClose asChild>
+                                                      <Link
+                                                        href={grandchild.url}
+                                                        className="text-white text-caption1 flex items-center gap-2"
+                                                      >
+                                                        <TriangledArrow className="h-3 w-5 fill-white" />
+                                                        {grandchild.title}
+                                                      </Link>
+                                                    </SheetClose>
                                                   </li>
                                                 )
                                               )}
@@ -197,7 +204,7 @@ const HeaderDesktop = ({ servicesData }: any) => {
                         fill: "#0f437f",
                       }}
                     />
-                    <div className="flex flex-col gap-2 py-4">
+                    <div className="flex flex-col gap-6 py-4">
                       <h3 className="text-heading5 font-bold">Contact Us</h3>
                       <ContactFormTech />
                     </div>

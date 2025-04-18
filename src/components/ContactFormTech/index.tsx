@@ -98,8 +98,8 @@ const ContactFormTech = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+        <div className="flex flex-col gap-2">
           <Controller
             name="name"
             control={control}
@@ -124,7 +124,7 @@ const ContactFormTech = () => {
             )}
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <Controller
             name="phone"
             control={control}
@@ -149,7 +149,7 @@ const ContactFormTech = () => {
             )}
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <Controller
             name="email"
             control={control}
@@ -179,7 +179,7 @@ const ContactFormTech = () => {
             )}
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <Controller
             name="projectInfo"
             control={control}
